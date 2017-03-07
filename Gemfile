@@ -26,6 +26,7 @@ gem 'devise', '~> 4.2.0'
 # Styling
 gem 'foundation-rails', '~> 6.3.0.0'
 gem 'slim-rails', '~> 3.1.1'
+gem 'simple_form', '~> 3.4.0'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
