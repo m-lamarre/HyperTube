@@ -22,4 +22,33 @@
 
 body {
   background-color: $body-background;
+  font-family: $body-font-family;
+}
+
+h1 {
+  text-align: center;
+  color: $body-font-color;
+  font-weight: bold;
+  font-size: 3em;
+}
+
+header {
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: $topbar-background;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #004F4F;
+  color: $topbar-background;
 }
