@@ -1,9 +1,14 @@
-header.top-bar[data-topbar role="navigation"]
-  .top-bar-left
-    strong#home_title
+header.header
+  h1.headline
+    | Hypertube
+    small
+      |  by the *Wildcards* team
+  ul.header-subnav
+    li
       = link_to "Home", root_path
-  #responsive-menu
-    .top-bar-right
-      ul.menu
-        li
-          = link_to "Home", root_path 
+    li
+      a.is-active[href="#"]
+        | Browse Movies
+    li
+      a[target="_blank" href="#"]
+        | Lorem Ipsem
