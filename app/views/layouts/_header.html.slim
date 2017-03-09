@@ -1,14 +1,15 @@
 header.header
   h1.headline
     | Hypertube
-    small
+    br
+    small.small-headline
       |  by the *Wildcards* team
   ul.header-subnav
     li
       = link_to "Home", root_path
     li
-      a.is-active[href="#"]
-        | Browse Movies
+      = link_to "Browse Movies"
     li
-      a[target="_blank" href="#"]
-        | Lorem Ipsem
+      = link_to "Sign Up", new_user_registration_path
+    li
+      = link_to "Sign In", new_user_session_path

@@ -13,15 +13,24 @@
 $subnav-link-padding: 0.9rem;
 $subnav-font-size: 0.75rem;
 $subnav-link-opacity: 0.15;
-$header-height: 2.5rem;
+$header-height: 2.0rem;
 $transition: all .35s ease-in-out;
 $text-color: #fff;
 
+/* Body */
 
 body {
   background-color: $body-background;
   font-family: $body-font-family;
 }
+
+/* Home Page */
+
+// .index-grid {
+//   @include block-grid(3);
+// }
+
+/* Header */
 
 h1 {
   text-align: center;
@@ -41,6 +50,10 @@ h1 {
 
   .headline {
     color: $text-color;
+  }
+  .small-headline {
+    color: #BAEFEF;
+    font-size: 0.7em;
   }
 }
 
@@ -66,10 +79,6 @@ h1 {
       letter-spacing: 1px;
       transition: $transition;
 
-      &.is-active {
-        background: rgba(250,250,250,$subnav-link-opacity);
-      }
-
       &:hover {
         background: rgba(250,250,250,$subnav-link-opacity);
         transition: $transition;
@@ -77,6 +86,8 @@ h1 {
     }
   }
 }
+
+/* Footer */
 
 .full-width {
   max-width: 1400px;
@@ -88,24 +99,48 @@ h1 {
   text-align: center;
   color: $text-color;
   i {
-    font-size: 100px;
+    font-size: 80px;
   }
-}
-
-.footer {
-  h4 {
-    color: $text-color;
-    font-size: 1em;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-top: 2.5rem;
-    margin-bottom: 10px;
-  }
-  p, a {
+  // h4 {
+  //   color: $text-color;
+  //   font-size: 1em;
+  //   font-weight: 400;
+  //   text-transform: uppercase;
+  //   margin-top: 2.5rem;
+  //   margin-bottom: 10px;
+  // }
+  p {
     font-weight: 300;
     font-size: .8em;
     color: $text-color;
   }
+  a {
+    font-weight: 300;
+    font-size: .8em;
+    color: $text-color;
+
+    &:hover {
+      background: rgba(250,250,250,$subnav-link-opacity);
+      transition: $transition;
+      padding: $subnav-link-padding 1rem;
+    }
+  }
+}
+
+.footer-links {
+  list-style-type: none;
+  margin: -18px;
+  margin-left: -22px;
+  li {
+    margin-top: .5em;
+  }
+}
+
+#copyright {
+  list-style-type: none;
+  text-align: center;
+  color: $text-color;
+  font-size: .7em;
 }
 
 @media only screen and (min-width: 40.063em) {
@@ -115,11 +150,4 @@ h1 {
     min-height: 280px;
   }
  }
-}
-
-.footer-links {
-  list-style-type: none;
-  li {
-    margin-top: .5em;
-  }
 }

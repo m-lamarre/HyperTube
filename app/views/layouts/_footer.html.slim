@@ -1,44 +1,39 @@
 footer.footer
   .row.full-width
-    .small-12.medium-3.large-4.columns
+    .small-12.medium-3.large-3.columns
       i.fi-video
       p
         | Watch Movies directly on the Website!
-    .small-12.medium-3.large-4.columns
+    .small-12.medium-3.large-3.columns
       i.fi-laptop
       p
         | Download Movies directly to your computer!
-    .small-6.medium-3.large-2.columns
-      i.align-justify
-      h4
-        | Site Map
+    .small-6.medium-3.large-3.columns
+      i.fi-align-justify
       ul.footer-links
         li
-          a[href="#"]
-            | Home
+          = link_to "Home", root_path
         li
-          a[href="#"]
-            | Browse Movies
+          = link_to "Browse Movies"
         li
-          a[href="#"]
-            | Lorem
+          = link_to "Sign Up", new_user_registration_path
         li
-          a[href="#"]
-            | Ipsem
-    .small-6.medium-3.large-2.columns
-      i.social-myspace
-      h4
-        | Social Links
+          = link_to "Sign In", new_user_session_path
+    .small-6.medium-3.large-3.columns
+      i.fi-social-myspace
       ul.footer-links
         li
-          a[href="https://github.com/Kalilo/Hypertube"]
+          a[target="_blank" href="https://github.com/Kalilo/Hypertube"]
             | GitHub
         li
-          a[href="http://www.wethinkcode.co.za/"]
+          a[target="_blank" href="http://www.wethinkcode.co.za/"]
             | WeThinkCode_
         li
-          a[href="https://yts.ag/"]
+          a[target="_blank" href="https://yts.ag/"]
             | YTS.ag
         li
-          a[href="http://www.imdb.com/``"]
+          a[target="_blank" href="http://www.imdb.com/``"]
             | IMDB
+  br
+  .nav#copyright
+    | © 2017 khansman knage mlamarre — All rights reserved.
