@@ -10,6 +10,14 @@
 
 /* Global Variables */
 
+$dark1:   #004F4F;
+$dark2:   #006868;
+$base:    #008080;
+$light1:  #139797;
+$light2:  #33A0A0;
+$success: #00E700;
+$warning: #FFB400;
+$alert:   #FF0000;
 $subnav-link-padding: 0.9rem;
 $subnav-font-size: 0.75rem;
 $subnav-link-opacity: 0.15;
@@ -26,9 +34,24 @@ body {
 
 /* Home Page */
 
-// .index-grid {
-//   @include block-grid(3);
-// }
+.index-grid {
+  list-style-type: none;
+  text-align: center;
+  li {
+    margin: .5em;
+    margin-left: 2em;
+    margin-right: 2em;
+    float: none;
+    display: inline-block;
+  }
+}
+
+/* Buttons */
+
+.button {
+  font-family: $body-font-family;
+  background-color: $base;
+}
 
 /* Header */
 

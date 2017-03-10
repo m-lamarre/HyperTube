@@ -1,3 +1,5 @@
+- provide(:title, "Confirmation")
+
 h2
   | Resend Confirmation Instructions
 = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
@@ -7,6 +9,6 @@ h2
     br
     = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
   .actions
-    = f.submit "Resend confirmation instructions"
+    = f.submit "Resend Confirmation"
 br
 = render "devise/shared/links"
