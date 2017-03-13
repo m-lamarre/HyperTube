@@ -9,6 +9,6 @@ h2
     br
     = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
   .actions
-    = f.submit "Resend Confirmation"
+    = f.submit "Resend Confirmation", :class => 'button'
 br
 = render "devise/shared/links"

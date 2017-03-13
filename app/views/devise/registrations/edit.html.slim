@@ -30,7 +30,7 @@ h2
       | (we need your current password to confirm your changes)
     = f.password_field :current_password, autocomplete: "off"
   .actions
-    = f.submit "Update User Info"
+    = f.submit "Update User Info", :class => 'button'
 br
 h3
   | Cancel My Account
