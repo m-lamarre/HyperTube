@@ -11,5 +11,7 @@ class WebsiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "title", full_title("Sign Up")
     get new_user_session_path
     assert_select "title", full_title("Sign In")
+    get new_user_password_path
+    assert_select "title", full_title("Forgot Password")
   end
 end

@@ -15,7 +15,7 @@ $dark2:   #006868;
 $base:    #008080;
 $light1:  #139797;
 $light2:  #33A0A0;
-$success: #00E700;
+$success: #009257;
 $warning: #FFB400;
 $alert:   #FF0000;
 $subnav-link-padding: 0.9rem;
@@ -30,6 +30,25 @@ $text-color: #fff;
 body {
   background-color: $body-background;
   font-family: $body-font-family;
+}
+
+.alert {
+  color: $alert;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.notice {
+  color: $success;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+#error_explanation {
+  color: $alert;
+  h2 {
+    font-size: 1.2em;
+  }
 }
 
 /* Home Page */
