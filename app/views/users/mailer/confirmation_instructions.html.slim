@@ -1,0 +1,8 @@
+p
+  | Welcome to HyperTube
+  = @email
+  | !
+p
+  | Confirm your account through the link below to access all the movie goodness:
+p
+  = link_to 'Confirm My Account', confirmation_url(@resource, confirmation_token: @token)
