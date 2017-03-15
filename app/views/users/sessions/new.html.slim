@@ -7,8 +7,8 @@
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
           label[for="login"]
-            | Username or Password
-          = f.email_field :email, autofocus: true
+            | Username or Email Address
+          = f.text_field :login, autofocus: true
         .field
           = f.label :password
           = f.password_field :password, autocomplete: "off"
@@ -17,7 +17,7 @@
             = f.check_box :remember_me
             = f.label :remember_me
         br
-        .actions
+        .actions.text-center
           = f.submit "Log in", :class => 'button'
       br
       = render "devise/shared/links"

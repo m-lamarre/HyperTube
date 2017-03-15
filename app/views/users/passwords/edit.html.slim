@@ -12,7 +12,7 @@
           = f.label :password, "New Password"
           br
           - if @minimum_password_length
-            em
+            em.minimum-length
               | (
               = @minimum_password_length
               |  characters minimum)
@@ -22,7 +22,7 @@
           = f.label :password_confirmation, "Confirm New Password"
           br
           = f.password_field :password_confirmation, autocomplete: "off"
-        .actions
+        .actions.text-center
           = f.submit "Change My Password", :class => 'button'
       br
       = render "devise/shared/links"

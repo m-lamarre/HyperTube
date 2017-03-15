@@ -9,7 +9,7 @@
         .field
           = f.label :email
           = f.email_field :email, autofocus: true
-        .actions
+        .actions.text-center
           = f.submit "Reset Password", :class => 'button'
       br
       = render "devise/shared/links"
