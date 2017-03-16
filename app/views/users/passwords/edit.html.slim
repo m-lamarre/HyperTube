@@ -5,14 +5,14 @@
       h2.text-center
         | Change Your Password
       br
-      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
         = devise_error_messages!
         = f.hidden_field :reset_password_token
         .field
           = f.label :password, "New Password"
           br
           - if @minimum_password_length
-            em
+            em.minimum-length
               | (
               = @minimum_password_length
               |  characters minimum)
@@ -22,7 +22,7 @@
           = f.label :password_confirmation, "Confirm New Password"
           br
           = f.password_field :password_confirmation, autocomplete: "off"
-        .actions
+        .actions.text-center
           = f.submit "Change My Password", :class => 'button'
       br
       = render "devise/shared/links"

@@ -4,40 +4,64 @@
     .row.column.log-in-form
       h2.text-center
         | Edit User Info
-        = resource_name.to_s.humanize
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = devise_error_messages!
         .field
+          = f.label :username
+          = f.text_field :username, autofocus: true
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for: 
+            = resource.unconfirmed_email
+        .field
+          = f.label :first_name
+          = f.text_field :first_name, autofocus: true
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for: 
+            = resource.unconfirmed_email
+        .field
+          = f.label :last_name
+          = f.text_field :last_name
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for: 
+            = resource.unconfirmed_email
+        .field
           = f.label :email
-          = f.email_field :email, autofocus: true
+          = f.email_field :email
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           div
             | Currently waiting confirmation for: 
             = resource.unconfirmed_email
         .field
           = f.label :password
-          i
-            | (leave blank if you don't want to change it)
-          = f.password_field :password, autocomplete: "off"
           - if @minimum_password_length
-            em
+            em.minimum-length
               = @minimum_password_length
               |  characters minimum
+          br
+          i.minimum-length
+            | (leave blank if you don't want to change it)
+          = f.password_field :password, autocomplete: "off"
         .field
           = f.label :password_confirmation
           = f.password_field :password_confirmation, autocomplete: "off"
         .field
           = f.label :current_password
-          i
+          i.minimum-length
             | (we need your current password to confirm your changes)
           = f.password_field :current_password, autocomplete: "off"
-        .actions
+        .actions.text-center
           = f.submit "Update User Info", :class => 'button'
       br
-      h3
-        | Cancel My Account
-      p
-        | Want to leave us? 
-        = button_to "Cancel My Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
       br
-      = link_to "Back", :back
+      h2.text-center
+        | Cancel My Account
+      p.text-center#leave-us
+        | Want to leave us? 😢
+      actions.text-center
+        = button_to "Cancel My Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => 'button'
+      br
+      .text-center
+        = link_to "Back", :back

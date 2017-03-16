@@ -4,10 +4,13 @@
     .row.column.log-in-form
       h2.text-center
         | Sign In
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
-          = f.label :email
-          = f.email_field :email, autofocus: true
+          label.string.required[for="user_username"]
+            abbr[title="required"]
+              | *
+            |  Username or Email Address
+          = f.text_field :login, autofocus: true
         .field
           = f.label :password
           = f.password_field :password, autocomplete: "off"
@@ -16,7 +19,7 @@
             = f.check_box :remember_me
             = f.label :remember_me
         br
-        .actions
+        .actions.text-center
           = f.submit "Log in", :class => 'button'
       br
       = render "devise/shared/links"
