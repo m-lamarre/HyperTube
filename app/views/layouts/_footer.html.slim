@@ -15,10 +15,16 @@ footer.footer
           = link_to "Home", root_path
         li
           = link_to "Browse Movies"
-        li
-          = link_to "Sign Up", new_user_registration_path
-        li
-          = link_to "Sign In", new_user_session_path
+        - if user_signed_in?
+          li
+            = link_to "Edit User Info", edit_user_registration_path
+          li
+            = link_to "Logout", destroy_user_session_path 
+        - else
+          li
+            = link_to "Sign Up", new_user_registration_path
+          li
+            = link_to "Sign In", new_user_session_path
     .small-6.medium-3.large-3.columns
       i.fi-social-myspace
       ul.footer-links

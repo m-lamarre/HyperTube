@@ -4,10 +4,12 @@
     .row.column.log-in-form
       h2.text-center
         | Sign In
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
-          label[for="login"]
-            | Username or Email Address
+          label.string.required[for="user_username"]
+            abbr[title="required"]
+              | *
+            |  Username or Email Address
           = f.text_field :login, autofocus: true
         .field
           = f.label :password

@@ -4,8 +4,15 @@
     .row.column.log-in-form
       h2.text-center
         | Edit User Info
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = devise_error_messages!
+        .field
+          = f.label :username
+          = f.text_field :username, autofocus: true
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for: 
+            = resource.unconfirmed_email
         .field
           = f.label :first_name
           = f.text_field :first_name, autofocus: true
@@ -29,13 +36,14 @@
             = resource.unconfirmed_email
         .field
           = f.label :password
-          i.minimum-length
-            | (leave blank if you don't want to change it)
-          = f.password_field :password, autocomplete: "off"
           - if @minimum_password_length
             em.minimum-length
               = @minimum_password_length
               |  characters minimum
+          br
+          i.minimum-length
+            | (leave blank if you don't want to change it)
+          = f.password_field :password, autocomplete: "off"
         .field
           = f.label :password_confirmation
           = f.password_field :password_confirmation, autocomplete: "off"
@@ -47,10 +55,13 @@
         .actions.text-center
           = f.submit "Update User Info", :class => 'button'
       br
-      h3
+      br
+      h2.text-center
         | Cancel My Account
-      p
-        | Want to leave us? 
+      p.text-center#leave-us
+        | Want to leave us? 😢
+      actions.text-center
         = button_to "Cancel My Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => 'button'
       br
-      = link_to "Back", :back
+      .text-center
+        = link_to "Back", :back

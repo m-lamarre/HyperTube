@@ -3,18 +3,25 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_sign_up_parameters, if: :devise_controller?
   before_action :configure_permitted_sign_in_parameters, if: :devise_controller?
+  before_action :configure_account_update_parameters, if: :devise_controller?
+
+  def user_params
+    [:username, :first_name, :last_name, :email, :password, :password_confirmation]
+  end
 
   protected
 
     def configure_permitted_sign_up_parameters
-      added_attrs = [:username, :first_name, :last_name, :email, :password, :password_confirmation]
-      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-      devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+      devise_parameter_sanitizer.permit :sign_up, keys: user_params
     end
 
     def configure_permitted_sign_in_parameters
-      devise_parameter_sanitizer.permit(:sign_in) do |user_params|
-        user_params.permit(:username, :email, :password)
+      devise_parameter_sanitizer.permit(:sign_in) do |u|
+        u.permit(:username, :email, :password)
       end
+    end
+
+    def configure_account_update_parameters
+      devise_parameter_sanitizer.permit :account_update, keys: user_params
     end
 end
