@@ -16,9 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     def configure_permitted_sign_in_parameters
-      devise_parameter_sanitizer.permit(:sign_in) do |u|
-        u.permit(:username, :email, :password)
-      end
+      devise_parameter_sanitizer.permit :sign_in, keys: [:username, :email, :password]
     end
 
     def configure_account_update_parameters

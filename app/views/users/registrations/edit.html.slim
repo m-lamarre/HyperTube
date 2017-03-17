@@ -9,24 +9,12 @@
         .field
           = f.label :username
           = f.text_field :username, autofocus: true
-        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          div
-            | Currently waiting confirmation for: 
-            = resource.unconfirmed_email
         .field
           = f.label :first_name
-          = f.text_field :first_name, autofocus: true
-        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          div
-            | Currently waiting confirmation for: 
-            = resource.unconfirmed_email
+          = f.text_field :first_name
         .field
           = f.label :last_name
           = f.text_field :last_name
-        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          div
-            | Currently waiting confirmation for: 
-            = resource.unconfirmed_email
         .field
           = f.label :email
           = f.email_field :email
