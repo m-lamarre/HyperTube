@@ -7,7 +7,9 @@ Rails.application.routes.draw do
         unlocks:            'users/unlocks',
         # omniauth_callbacks: 'users/omniauth_callbacks',
       }
+  devise_scope :user do
+    get '/users/:id(.:format)' => 'users/sessions#show'
+  end
 
   root 'movies#index'
-
 end
