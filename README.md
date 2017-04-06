@@ -1,31 +1,24 @@
-# Hypertube - [*We Think Code*](http://www.wethinkcode.co.za/) School Project
+# README
 
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Getting started
+Things you may want to cover:
 
-Clone the repo and install the needed gems:
+* Ruby version
 
-```
-$ bundle install
-```
+* System dependencies
 
-Migrate the database:
+* Configuration
 
-```
-$ rails db:migrate
-```
+* Database creation
 
-Run the test suite to verify that everything is working correctly:
+* Database initialization
 
-```
-$ rails test
-```
+* How to run the test suite
 
-If the test suite passes, run the app in a local server:
+* Services (job queues, cache servers, search engines, etc.)
 
-```
-$ rails server
-```
+* Deployment instructions
 
-
-See [GNU GENERAL PUBLIC LICENSE](https://github.com/Kalilo/Hypertube/blob/master/LICENSE) for license details.
+* ...
