@@ -28,5 +28,7 @@ html[lang="en"]
     script[src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/plugins/foundation.core.js"]
     script
       |  $(document).foundation(); 
-      
+    
+    = debug(params) if Rails.env.development?
+    
     = render 'layouts/footer'
