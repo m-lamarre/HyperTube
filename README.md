@@ -1,20 +1,7 @@
-Hypertube
-================
+# Hypertube - [*We Think Code*](http://www.wethinkcode.co.za/) School Project
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
 
-Rails Composer is supported by developers who purchase our RailsApps tutorials.
-
-Problems? Issues?
------------
-
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
+## Getting started
 
 Ruby on Rails
 -------------
@@ -24,25 +11,30 @@ This application requires:
 - Ruby 2.4.0
 - Rails 5.0.2
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
-Getting Started
----------------
+Clone the repo and install the needed gems:
 
-Documentation and Support
--------------------------
+```
+$ bundle install
+```
 
-Issues
--------------
+Migrate the database:
 
-Similar Projects
-----------------
+```
+$ rails db:migrate
+```
 
-Contributing
-------------
+Run the test suite to verify that everything is working correctly:
 
-Credits
--------
+```
+$ rails test
+```
 
-License
--------
+If the test suite passes, run the app in a local server:
+
+```
+$ rails server
+```
+
+
+See [GNU GENERAL PUBLIC LICENSE](https://github.com/Kalilo/Hypertube/blob/master/LICENSE) for license details.
