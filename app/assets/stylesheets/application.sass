@@ -1,0 +1,224 @@
+ // *= require_tree .
+ // *= require_self
+ // *= require foundation
+ // *= require foundation_and_overrides
+
+@import settings
+@import foundation
+
+/* Global Variables
+
+$teal-50:  #E0F2F1
+$teal-100: #B2DFDB
+$teal-200: #80CBC4
+$teal-300: #4DB6AC
+$teal-400: #26A69A
+$teal-500: #009688
+$teal-600: #00897B
+$teal-700: #00796B
+$teal-800: #00695C
+$teal-900: #004D40
+
+$grey-50:  #FAFAFA
+$grey-100: #F5F5F5
+$grey-200: #EEEEEE
+$grey-300: #E0E0E0
+$grey-400: #BDBDBD
+$grey-500: #9E9E9E
+$grey-600: #757575
+$grey-700: #616161
+$grey-800: #424242
+$grey-900: #212121
+
+$alert: #FF0000
+$btn-radius: 5px
+$btn-shadow: 0.3rem 0.3rem 0.3rem
+$header-height: 2rem
+$shadow: $teal-900
+$subnav-font-size: 0.75rem
+$subnav-link-opacity: 0.15
+$subnav-link-padding: 0.9rem
+$success: #009257
+$text-color: #FAFAFA
+$transition: all 0.35s ease-in-out
+$warning: #FFB400
+
+/* Body
+
+body
+  background-color: $body-background
+  font-family: $body-font-family
+  overflow: scroll
+
+.alert
+  color: $alert
+  font-size: 1.1em
+  text-align: center
+
+.notice
+  color: $success
+  font-size: 1.1em
+  text-align: center
+
+#error_explanation
+  color: $alert
+
+  h2
+    font-size: 1.2em
+
+/* Home Page
+
+.index-grid
+  list-style-type: none
+  text-align: center
+
+  li
+    display: inline-block
+    float: none
+    margin-left: 2em
+    margin-right: 2em
+    margin: .5em
+
+/* Buttons
+
+.button
+  -moz-border-radius: $btn-radius
+  -moz-box-shadow: $shadow $btn-shadow
+  -webkit-border-radius: $btn-radius
+  -webkit-box-shadow: $shadow $btn-shadow
+  background-color: $teal-500
+  border-radius: $btn-radius
+  box-shadow: $shadow $btn-shadow
+  font-family: $body-font-family
+
+/* Header
+
+h1
+  color: $body-font-color
+  font-size: 3em
+  font-weight: bold
+  text-align: center
+
+.header
+  background-size: cover
+  background: $topbar-background
+  overflow: visible
+  padding-bottom: $header-height + $subnav-link-padding * 2 + $subnav-font-size - 0.15rem
+  padding-top: $header-height
+  position: relative
+  text-align: center
+
+  .headline
+    color: $text-color
+
+  .small-headline
+    color: $grey-400
+    font-size: 0.7em
+
+.header-subnav
+  bottom: 0
+  float: none
+  margin: 0 auto
+  position: absolute
+  text-align: center
+  width: 100%
+
+  li
+    display: inline-block
+    float: none
+
+    a
+      color: $text-color
+      display: block
+      font-size: $subnav-font-size
+      font-weight: bold
+      letter-spacing: rem-calc(1)
+      padding: $subnav-link-padding 1rem
+      text-transform: uppercase
+      transition: $transition
+
+      &:hover
+        background: rgba(250, 250, 250, $subnav-link-opacity)
+        border-radius: rem-calc(5)
+        transition: $transition
+
+/* Footer
+
+.full-width
+  max-width: rem-calc(1400)
+
+.footer
+  background-color: $topbar-background
+  bottom: 0px
+  color: $text-color
+  // height: rem-calc(300)
+  padding: 2rem 4rem
+  // position: fixed
+  text-align: center
+  width: 100%
+
+  i
+    font-size: rem-calc(80)
+
+  h4
+    color: $text-color
+    font-size: 1em
+    font-weight: 400
+    margin-bottom: rem-calc(10)
+    margin-top: 2.5rem
+    text-transform: uppercase
+
+  p
+    color: $text-color
+    font-size: .8em
+    font-weight: 300
+
+  a
+    color: $text-color
+    font-size: .8em
+    font-weight: 300
+
+    &:hover
+      background: rgba(250, 250, 250, $subnav-link-opacity)
+      border-radius: rem-calc(5)
+      padding: $subnav-link-padding 1rem
+      transition: $transition
+
+.footer-links
+  list-style-type: none
+  margin-left: rem-calc(-22)
+  margin: rem-calc(-18)
+
+  li
+    margin-top: .5em
+
+#copyright
+  color: $text-color
+  font-size: .7em
+  list-style-type: none
+  text-align: center
+
+@media only screen and (min-width: 40.063em)
+  .footer
+    .columns:nth-child(n+2)
+      border-left: 1px solid scale-color($text-color, $lightness: -30%)
+      min-height: rem-cal(280)
+
+/* Forms
+
+.links
+  color: $teal-900
+  font-size: rem-calc(14)
+  line-height: rem-calc(24)
+  &:hover
+    color: $teal-700
+
+.inline-links
+  display: inline
+
+.minimum-length
+  font-size: 0.8em
+
+#leave-us
+  color: $teal-800
+  font-size: 1.3em
