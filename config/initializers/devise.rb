@@ -1,25 +1,24 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.authentication_keys = [ :login ]
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '9bf49dbcc3b34b57b0e61f425bdd436074d65d1c01697e61b8619dcf79c4892e059cd8e6e8e065d10d85105883cb91390567b87edca1e62dd7eb2460e5dedc5c'
+  # config.secret_key = 'a4ebbff820909865811c6aa7650cd4e38cb606e2edd93bfd9325c7f6be2af736c8015d3565deea7517d8ca9bc99ec219a284625890c583161c76eda2d21288cf'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'no-reply@hypertube.com'
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'Devise::Mailer'
+  # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
-  config.parent_mailer = 'ActionMailer::Base'
+  # config.parent_mailer = 'ActionMailer::Base'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -109,10 +108,13 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '4c8eb65d4644db46b3bbf53dc10f155fdb15318f6e70e8e1f2132cdb6c0921032733a09acce4b10c297fcc4abff8e74ddb888ab39bfff2e39a2a1e419f160481'
+  # config.pepper = '451b0429693a872675d66b156d836345b58d630de47bb410b27eec832e70e577ec6371be213108262c85451ae8464abb31182802d5a578e85f0f551ba3d8965f'
 
-  # Send a notification email when the user's password is changed
-  config.send_password_change_notification = true
+  # Send a notification to the original email when the user's email is changed.
+  # config.send_email_changed_notification = false
+
+  # Send a notification email when the user's password is changed.
+  # config.send_password_change_notification = false
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -137,7 +139,7 @@ Devise.setup do |config|
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  config.confirmation_keys = [:email]
+  # config.confirmation_keys = [:email]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
@@ -155,7 +157,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 6..50
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -171,32 +173,32 @@ Devise.setup do |config|
   # Defines which strategy will be used to lock an account.
   # :failed_attempts = Locks an account after a number of failed attempts to sign in.
   # :none            = No lock strategy. You should handle locking by yourself.
-  config.lock_strategy = :failed_attempts
+  # config.lock_strategy = :failed_attempts
 
   # Defines which key will be used when locking and unlocking an account
-  config.unlock_keys = [:email]
+  # config.unlock_keys = [:email]
 
   # Defines which strategy will be used to unlock an account.
   # :email = Sends an unlock link to the user email
   # :time  = Re-enables login after a certain amount of time (see :unlock_in below)
   # :both  = Enables both strategies
   # :none  = No unlock strategy. You should handle unlocking by yourself.
-  config.unlock_strategy = :email
+  # config.unlock_strategy = :both
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
-  config.maximum_attempts = 5
+  # config.maximum_attempts = 20
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
 
   # Warn on the last attempt before the account is locked.
-  config.last_attempt_warning = true
+  # config.last_attempt_warning = true
 
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  config.reset_password_keys = [:email]
+  # config.reset_password_keys = [:email]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
@@ -243,20 +245,12 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :get
+  config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github,   'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  # config.omniauth :facebook, 'APP_ID', 'APP_SECRET', callback_url: 'CALLBACK_URL'
-  # replace APP_ID and APP_SECRET with your app id and secret.
-  # CALLBACK_URL should be something like https://myapp.com/users/auth/facebook/callback.
-  # To alter the permissions or scopes requested, check the omniauth-facebook gem's README
-  # https://github.com/mkdynamic/omniauth-facebook
-  # After configuring your strategy, you need to make your model (/models/user.rb) omniauthable:
-  # devise :omniauthable, :omniauth_providers => [:facebook]
-  # Restart the Rails Server so it can recognize the change in the Devise initializer
+  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

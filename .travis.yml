@@ -1,0 +1,22 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.4.0
+
+before_script:
+  - cp config/database.example.yml config/database.yml
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+
+cache:
+  bundler: true
+
+services:
+  - redis-server
+
+script:
+  - xvfb-run bundle exec rspec spec
+
+notifications:
+  slack:
+    secure:
