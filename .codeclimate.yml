@@ -1,0 +1,38 @@
+# prepare:
+#   fetch:
+#   - url: 'https://github.com/codeclimate/codeclimate/blob/master/config/rubocop/.rubocop.yml'
+#     path: '.rubocop.yml'
+#   - url: 'https://github.com/codeclimate/codeclimate/blob/master/config/eslint/.eslintrc'
+#     path: '.eslintrc'
+
+engines:
+  brakeman:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+    config:
+      strings:
+      - BUG
+      - FIXME
+      - TODO
+  rubocop:
+    enabled: true
+
+ratings:
+  paths:
+  - '**.es6'
+  - '**.js'
+  - '**.rb'
+
+exclude_paths:
+- 'lib/generators/helper_elf/templates/**/*'
+- 'spec/**/*'
+- '**/vendor/**/*'assword: load

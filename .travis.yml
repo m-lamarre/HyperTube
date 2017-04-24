@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.4.0
+
+cache:
+  bundler: true
+
+addons:
+  code_climate:
+    repo_token: 59c2a406ac2993a31f700d32570d7a0c92ecb3c819a079640cbadac95b9fcc81
+
+after_success:
+  - bundle exec codeclimate-test-reporter
