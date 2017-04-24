@@ -4,6 +4,3 @@ rvm:
 
 cache:
   bundler: true
-
-after_success:
-  - bundle exec codeclimate-test-reporter
