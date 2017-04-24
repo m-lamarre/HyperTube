@@ -2,43 +2,36 @@
 
 @import 'settings';
 @import 'foundation';
-
-// If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
-//
 @import 'motion-ui/motion-ui';
 
-// We include everything by default.  To slim your CSS, remove components you don't use.
-
-@include foundation-global-styles;
-@include foundation-grid;
-@include foundation-typography;
-@include foundation-button;
-@include foundation-forms;
-@include foundation-visibility-classes;
-@include foundation-float-classes;
-@include foundation-accordion;
 @include foundation-accordion-menu;
+@include foundation-accordion;
 @include foundation-badge;
 @include foundation-breadcrumbs;
 @include foundation-button-group;
+@include foundation-button;
 @include foundation-callout;
 @include foundation-card;
 @include foundation-close-button;
 @include foundation-drilldown-menu;
-@include foundation-dropdown;
 @include foundation-dropdown-menu;
-@include foundation-responsive-embed;
+@include foundation-dropdown;
+@include foundation-float-classes;
+@include foundation-forms;
+@include foundation-global-styles;
+@include foundation-grid;
 @include foundation-label;
 @include foundation-media-object;
-@include foundation-menu;
 @include foundation-menu-icon;
+@include foundation-menu;
 @include foundation-off-canvas;
 @include foundation-orbit;
 @include foundation-pagination;
 @include foundation-progress-bar;
+@include foundation-responsive-embed;
+@include foundation-reveal;
 @include foundation-slider;
 @include foundation-sticky;
-@include foundation-reveal;
 @include foundation-switch;
 @include foundation-table;
 @include foundation-tabs;
@@ -46,8 +39,7 @@
 @include foundation-title-bar;
 @include foundation-tooltip;
 @include foundation-top-bar;
-
-// If you'd like to include motion-ui the foundation-rails gem comes prepackaged with it, uncomment the 3 @imports, if you are not using the gem you need to install the motion-ui sass package.
-//
-// @include motion-ui-transitions;
-// @include motion-ui-animations;
+@include foundation-typography;
+@include foundation-visibility-classes;
+@include motion-ui-animations;
+@include motion-ui-transitions;
