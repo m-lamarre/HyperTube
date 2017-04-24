@@ -37,6 +37,7 @@ exclude_paths:
 - 'spec/**/*'
 - '**/vendor/**/*'assword: load
 
+
 dependencies:
   pre:
     - gem install bundler -v 1.10.6
