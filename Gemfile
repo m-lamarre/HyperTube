@@ -1,52 +1,74 @@
 source 'https://rubygems.org'
+
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
+
 ruby '2.4.0'
+
 gem 'rails', '~> 5.0.2'
-gem 'sqlite3'
-gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
+
+# Core
+gem 'devise'
+gem 'high_voltage'
+gem 'inherited_resources', '~> 1.7'
+gem 'paperclip', '~> 5.0.0'
+gem 'pg'
+gem 'pundit'
+gem 'simple_form'
+gem 'slim-rails'
+gem 'will_paginate', '~> 3.1.0'
+
+# Assests: Stylesheets
+gem 'autoprefixer-rails'
 gem 'foundation-rails'
-gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails', '~> 5.0'
+
+# Assests: Javascripts
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
-group :development, :test do
-  gem 'byebug', platform: :mri
-end
+gem 'uglifier'
+
+# File management
+gem 'file_validators'
+gem 'mini_magick'
+
+# Omniauth
+gem 'omniauth-facebook', '~> 4.0.0'
+gem 'omniauth-google-oauth2', '~> 0.4.1'
+gem 'omniauth-marvin', '~> 1.0.2'
+
+# Misc
+gem 'faker'
+gem 'postmark-rails', '~> 0.15.0'
+gem 'pry-rails'
+gem 'puma', '~> 3.0'
+
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-end
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'devise'
-gem 'high_voltage'
-gem 'simple_form'
-gem 'slim-rails'
-group :development do
-  gem 'better_errors'
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
+  gem 'letter_opener'
+  gem 'listen'
   gem 'rails_layout'
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
+  gem 'rubocop'
+  gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'spring-watcher-listen'
+  gem 'web-console'
+
+  group :darwin do # OSX Only
+    gem 'terminal-notifier-guard'
+  end
 end
+
 group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'faker'
-  gem 'rspec-rails'
-end
-group :test do
-  gem 'capybara'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
   gem 'launchy'
-  gem 'selenium-webdriver'
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'dotenv-rails'
 end

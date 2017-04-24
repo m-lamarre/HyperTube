@@ -35,9 +35,4 @@ ratings:
 exclude_paths:
 - 'lib/generators/helper_elf/templates/**/*'
 - 'spec/**/*'
-- '**/vendor/**/*'assword: load
-
-
-dependencies:
-  pre:
-    - gem install bundler -v 1.10.6
+- '**/vendor/**/*'
