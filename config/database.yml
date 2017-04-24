@@ -1,19 +1,16 @@
-default: &default
+development: &default
   adapter: postgresql
   encoding: unicode
-
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-development:
-  <<: *default
-  database: Hypertube_development
+  database: hypertybe_development
+  pool: 5
+  username: postgres
+  password:
+  host: db
 
 test:
   <<: *default
-  database: Hypertube_test
+  database: hypertube_test
 
 production:
   <<: *default
-  database: Hypertube_production
-  username: Hypertube
-  password: <%= ENV['HYPERTUBE_DATABASE_PASSWORD'] %>
+  database: hypertube_production
