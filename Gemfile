@@ -32,6 +32,7 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier'
 
 # File management
+gem 'carrierwave'
 gem 'file_validators'
 gem 'mini_magick'
 
