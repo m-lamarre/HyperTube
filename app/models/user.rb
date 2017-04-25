@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
+  validates_presence_of :username
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
