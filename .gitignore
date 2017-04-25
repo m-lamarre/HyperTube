@@ -18,3 +18,4 @@
 
 # Other
 config/application.yml
+.env
