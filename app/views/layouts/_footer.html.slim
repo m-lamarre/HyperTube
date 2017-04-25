@@ -14,7 +14,7 @@ footer.footer
         li
           = link_to 'Home', root_path
         li
-          = link_to 'Browse Movies'
+          = link_to 'About', '/pages/about'
         - if user_signed_in?
           li
             = link_to 'Edit User Info', edit_user_registration_path
