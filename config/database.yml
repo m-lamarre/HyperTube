@@ -1,7 +1,18 @@
 development: &default
   adapter: postgresql
+  database: Hypertube_development
+  encoding: utf8
+  host: localhost
+  min_messages: warning
+  pool: 5
+  timeout: 5000
+
+
+docker:
+  adapter: postgresql
   encoding: unicode
-  database: hypertube_development
+  database: Hypertube_docker
+
   pool: 5
   username: postgres
   password:
@@ -9,7 +20,7 @@ development: &default
 
 test:
   <<: *default
-  database: hypertube_test
+  database: Hypertube_test
 
 production:
   <<: *default
