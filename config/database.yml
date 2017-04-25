@@ -1,7 +1,7 @@
 development: &default
   adapter: postgresql
   encoding: unicode
-  database: hypertybe_development
+  database: hypertube_development
   pool: 5
   username: postgres
   password:
