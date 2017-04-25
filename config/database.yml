@@ -12,6 +12,7 @@ docker:
   adapter: postgresql
   encoding: unicode
   database: Hypertube_docker
+
   pool: 5
   username: postgres
   password:
