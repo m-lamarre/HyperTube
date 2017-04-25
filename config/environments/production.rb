@@ -85,6 +85,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: Rails.application.secrets.default_url_host }
+  Rails.application.routes.default_url_options[:host] = Rails.application.secrets.default_url_host
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
