@@ -33,6 +33,7 @@ gem 'uglifier'
 
 # File management
 gem 'carrierwave'
+gem 'carrierwave-google_drive'
 gem 'file_validators'
 gem 'mini_magick'
 
