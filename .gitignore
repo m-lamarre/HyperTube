@@ -20,4 +20,5 @@
 config/application.yml
 .env
 public/uploads
+public/hypertube
 .DS_Store
