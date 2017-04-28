@@ -13,13 +13,13 @@ html lang='en'
 
   body
     = render 'layouts/header'
-    br
+    .br
     p.notice
       = notice
     p.alert
       = alert
 
     = yield
-    br
+    .br
 
     = render 'layouts/footer'

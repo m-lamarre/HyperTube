@@ -3,8 +3,8 @@
 .row
   .medium-6.medium-centered.large-4.large-centered.columns
     .row.column.log-in-form
-      h2.text-center
-        | Resend confirmation instructions
+      h3.text-center
+        | Resend Confirmation Instructions
       = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
         = f.error_notification
         = f.full_error :confirmation_token
@@ -12,5 +12,5 @@
           = f.input :email, required: true, autofocus: true
         .form-actions.text-center
           = f.button :submit, 'RESEND', class: 'button'
-        br
-        = link_to 'Back', new_user_session_path, class: 'links'
+        .br.text-center
+          = link_to 'Back', new_user_session_path, class: 'links'
