@@ -8,8 +8,15 @@
       .br
       p.text-center
         |  This is a  
-        = link_to('WeThinkCode_', 'http://www.wethinkcode.co.za/')
+        = link_to('WeThinkCode_', 'http://www.wethinkcode.co.za/', target: '_blank', class: 'links')
         |  school project, aimed at creating a Web Application that allows a User to search for, download then stream videos directly from this website.
       .br
       p.text-center
         | Once the video has been selected, it will be downloaded from the server and streamed on the web player at the same time.
+      .br
+      p.text-center
+        | This project was created using 
+        = link_to('Ruby on Rails Web-Application Framework', 'http://rubyonrails.org/', target: '_blank', class: 'links') 
+        |  and 
+        = link_to('Foundation Front-End Framework', 'http://foundation.zurb.com/sites.html', target: '_blank', class: 'links')
+        | .
