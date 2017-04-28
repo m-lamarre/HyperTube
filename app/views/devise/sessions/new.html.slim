@@ -1,10 +1,32 @@
-h2
-  | Log in
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :login, required: false, autofocus: true
-    = f.input :password, required: false
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, 'Log in'
-= render 'devise/shared/links'
+- provide(:title, "Log In")
+
+.row
+  .medium-6.medium-centered.large-4.large-centered.columns
+    .row.column.log-in-form
+      h2.text-center
+        | Log In
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-inputs
+          = f.input :login, required: false, autofocus: true
+          = f.input :password, required: false
+        .float-left
+          = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+        .float-right
+          = link_to 'Forgot your password?', new_password_path(resource_name), class: 'links'
+        br
+        br
+        .form-actions.text-center
+          = f.button :submit, 'LOG IN', class: 'button'
+        .text-center
+          - if devise_mapping.omniauthable?
+            - resource_class.omniauth_providers.each do |provider|
+              = link_to "Log In with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: 'button'
+        br
+        .text-center
+          = link_to "Don't have an account yet? Sign Up here.", new_registration_path(resource_name), class: 'links'
+        br
+        .text-center
+          = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: 'links'
+        br
+        .text-center
+          = link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: 'links'
