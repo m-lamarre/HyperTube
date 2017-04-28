@@ -60,11 +60,14 @@ body
   font-size: 1.1em
   text-align: center
 
-#error_explanation
+.error_notification
   color: $alert
+  padding: rem-calc(10)
+  text-align: center
 
-  h2
-    font-size: 1.2em
+span.error
+  color: $alert
+  font-size: rem-calc(14)
 
 /* Home Page
 
@@ -82,14 +85,16 @@ body
 /* Buttons
 
 .button
-  -moz-border-radius: $btn-radius
-  -moz-box-shadow: $shadow $btn-shadow
-  -webkit-border-radius: $btn-radius
-  -webkit-box-shadow: $shadow $btn-shadow
   background-color: $teal-500
   border-radius: $btn-radius
   box-shadow: $shadow $btn-shadow
   font-family: $body-font-family
+  transition: background-color 0.25s ease-out, color 0.25s ease-out
+  +breakpoint(small only)
+    max-width: 50%
+  &:hover, &:active, &:focus
+    background: $teal-800
+    color: $white
 
 /* Header
 
@@ -157,9 +162,6 @@ h1
   text-align: center
   width: 100%
 
-  i
-    font-size: rem-calc(80)
-
   h4
     color: $text-color
     font-size: 1em
@@ -208,7 +210,7 @@ h1
 
 .links
   color: $teal-900
-  font-size: rem-calc(14)
+  font-size: rem-calc(16)
   line-height: rem-calc(24)
   &:hover
     color: $teal-700
@@ -216,9 +218,11 @@ h1
 .inline-links
   display: inline
 
-.minimum-length
-  font-size: 0.8em
-
 #leave-us
   color: $teal-800
   font-size: 1.3em
+
+abbr[title]
+  float: right
+  text-decoration: none
+  color: $black
