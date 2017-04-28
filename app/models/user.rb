@@ -13,6 +13,8 @@ class User < ApplicationRecord
          :lockable,
          :omniauthable, omniauth_providers: %i(google_oauth2)
 
+  mount_uploader :profile_picture, AvatarUploader
+
   def login=(login)
     @login = login
   end
