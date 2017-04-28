@@ -1,32 +1,34 @@
 footer.footer
   .row.full-width
     .small-12.medium-3.large-3.columns
-      i.fi-video
+      = image_tag('video.svg', alt: 'video')
       p
         | Watch Movies directly on the Website!
     .small-12.medium-3.large-3.columns
-      i.fi-laptop
+      = image_tag('laptop.svg', alt: 'laptop')
       p
         | Download Movies directly to your computer!
     .small-6.medium-3.large-3.columns
-      i.fi-align-justify
+      = image_tag('align-justify.svg', alt: 'menu icon')
       ul.footer-links
         li
           = link_to 'Home', root_path
-        li
-          = link_to 'About', '/pages/about'
         - if user_signed_in?
+          li
+            = link_to 'Browse Movies', '#'
           li
             = link_to 'Edit User Info', edit_user_registration_path
           li
-            = link_to 'Logout', destroy_user_session_path
+            = link_to 'Logout', destroy_user_session_path, method: :delete
         - else
+          li
+            = link_to 'About', '/pages/about'
           li
             = link_to 'Sign Up', new_user_registration_path
           li
             = link_to 'Sign In', new_user_session_path
     .small-6.medium-3.large-3.columns
-      i.fi-social-myspace
+      = image_tag('social-myspace.svg', alt: 'social icon')
       ul.footer-links
         li
           a[target='_blank' href='https://github.com/Kalilo/Hypertube']
