@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
-  # validates_presence_of :username
+  validates :username,
+            uniqueness: true,
+            presence: true,
+            format:  { with: /^[a-zA-Z0-9_\.]*$/, multiline: true }
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -35,6 +38,7 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
+      user.username = "#{auth.info.email.split('@').first}_#{rand(1..9).to_s}"
       user.password = Devise.friendly_token[0,20]
       user.skip_confirmation!
     end
