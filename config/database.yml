@@ -1,13 +1,11 @@
 development: &default
   adapter: postgresql
   database: Hypertube_development
-  encoding: SQL_ASCII
+  encoding: utf8
   host: localhost
   min_messages: warning
-  password: load
   pool: 5
   timeout: 5000
-  username: heavy
 
 docker:
   adapter: postgresql
