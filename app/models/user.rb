@@ -36,11 +36,30 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user = where(provider: auth.provider, uid: auth.uid).first
+    if user.blank?
+      user = User.new
       user.email = auth.info.email
-      user.username = "#{auth.info.email.split('@').first}_#{rand(1..9).to_s}"
+      user.username = user.get_unique_username(auth.info.email)
+      #user.avatar = open auth.info.image <- for when images are in
       user.password = Devise.friendly_token[0,20]
+      user.provider = auth.provider
+      user.uid = auth.uid
       user.skip_confirmation!
+      user.save!
     end
+
+    user
+  end
+
+  def get_unique_username(email)
+    username = email.split('@').first
+    num = 2
+    until(User.find_by(username: username).blank?)
+      username = "#{username}#{num}"
+      num += 1
+    end
+
+    username
   end
 end
