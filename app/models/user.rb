@@ -40,7 +40,7 @@ class User < ApplicationRecord
     if user.blank?
       user = User.new
       user.email = auth.info.email
-      user.username = user.get_unique_username(auth.info.email)
+      user.get_unique_username(auth.info.email)
       #user.avatar = open auth.info.image <- for when images are in
       user.password = Devise.friendly_token[0,20]
       user.provider = auth.provider
@@ -53,13 +53,11 @@ class User < ApplicationRecord
   end
 
   def get_unique_username(email)
-    username = email.split('@').first
+    self.username = email.split('@').first
     num = 2
-    until(User.find_by(username: username).blank?)
-      username = "#{username}#{num}"
+    until(User.find_by(username: self.username).blank?)
+      self.username = "#{username}#{num}"
       num += 1
     end
-
-    username
   end
 end
