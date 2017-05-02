@@ -1,10 +1,10 @@
 - provide(:title, 'Home')
 
 h1
-  | Featured
+  | Movies
 row
   ul.index-grid
-    - @random_movies.each do |movie|
+    - @movies.each do |movie|
       li
         = link_to src = movie_path(id: movie[:id], source: movie[:source])
           img.thumbnail.homepage src="#{movie[:image_url]}"
