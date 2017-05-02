@@ -5,6 +5,7 @@ class User < ApplicationRecord
             uniqueness: true,
             presence: true,
             format:  { with: /^[a-zA-Z0-9_\.]*$/, multiline: true }
+  validates_presence_of :first_name, :last_name
 
   devise :database_authenticatable,
          :registerable,
@@ -14,7 +15,7 @@ class User < ApplicationRecord
          :validatable,
          :confirmable,
          :lockable,
-         :omniauthable, omniauth_providers: %i(google_oauth2)
+         :omniauthable, omniauth_providers: %i(google_oauth2 marvin)
 
   mount_uploader :profile_picture, AvatarUploader
 
@@ -41,7 +42,7 @@ class User < ApplicationRecord
       user = User.new
       user.email = auth.info.email
       user.get_unique_username(auth.info.email)
-      #user.avatar = open auth.info.image <- for when images are in
+      user.profile_picture = open auth.info.image
       user.password = Devise.friendly_token[0,20]
       user.provider = auth.provider
       user.uid = auth.uid
