@@ -18,4 +18,8 @@
 
 # Other
 config/application.yml
+config/database.yml
 .env
+public/uploads
+public/hypertube
+.DS_Store
