@@ -10,9 +10,9 @@
         = f.full_error :unlock_token
         .form-inputs
           = f.input :email, required: true, autofocus: true
-        br
+        .gap
         .form-actions.text-center
           = f.button :submit, 'RESEND', class: 'button'
-        br
+        .gap
         .text-center
           = link_to 'Back', new_user_session_path, class: 'links'

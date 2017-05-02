@@ -7,6 +7,7 @@
         | Edit 
         = resource_name.to_s.humanize
         |  Profile
+      .gap
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = f.error_notification
         .form-inputs
@@ -27,20 +28,22 @@
             |  
           = f.label '(enter current password to confirm changes)', class: 'inline-links small-hint'
           = f.input :current_password, required: true, label: false
-        br  
+        .gap
         .form-actions.text-center
           = f.button :submit, 'UPDATE', class: 'button'
-      br
+      .gap
       hr
       h3.text-center
         | Cancel My Account
+      .gap
       p.text-center#leave-us
         | Want to leave us? 😢
+      .gap
       .text-center
         = link_to 'CANCEL ACCOUNT', registration_path(resource_name),
                   data: { confirm: 'Are you sure?' },
                   method: :delete,
                   class: 'button'
-      br
+      .gap
       .text-center
         = link_to 'Back', :back, class: 'links'
