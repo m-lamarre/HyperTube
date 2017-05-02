@@ -1,0 +1,16 @@
+- provide(:title, 'Home')
+
+h1
+  | Stream and Download Movies
+br
+br
+  ul.index-grid
+    li
+     img.thumbnail.homepage src="#{@random_movies[0][:image_url]}"
+     p = @random_movies[0][:title]
+    li
+      img.thumbnail.homepage src="#{@random_movies[1][:image_url]}"
+      p = @random_movies[1][:title]
+    li
+      img.thumbnail.homepage src="#{@random_movies[2][:image_url]}"
+      p = @random_movies[2][:title]
