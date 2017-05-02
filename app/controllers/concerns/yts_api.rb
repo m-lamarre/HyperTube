@@ -31,7 +31,7 @@ private
   end
 
   def serialize_yts_movies(movies)
-    movies.map { |movie| serialize_yts_movie(movie) }.reduce
+    movies.map { |movie| serialize_yts_movie(movie) }.compact
   end
 
   def get_yts_movie_by_id(id = 0)
