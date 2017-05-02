@@ -13,13 +13,12 @@ html lang='en'
 
   body
     = render 'layouts/header'
-    .br
-    p.notice
-      = notice
-    p.alert
-      = alert
+    .content-wrapper
+      p.notice
+        = notice
+      p.alert
+        = alert
 
-    = yield
-    .br
+      = yield
 
     = render 'layouts/footer'

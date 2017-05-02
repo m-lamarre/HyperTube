@@ -50,14 +50,18 @@ body
   font-family: $body-font-family
   overflow: scroll
 
+.content-wrapper
+  margin-top: rem-calc(24)
+  margin-bottom: rem-calc(24)
+
 .alert
   color: $alert
-  font-size: 1.1em
+  font-size: rem-calc(16)
   text-align: center
 
 .notice
   color: $success
-  font-size: 1.1em
+  font-size: rem-calc(16)
   text-align: center
 
 .error_notification
@@ -68,9 +72,6 @@ body
 span.error
   color: $alert
   font-size: rem-calc(14)
-
-.br
-  height: rem-calc(20)
 
 /* Home Page
 
@@ -223,7 +224,7 @@ h1
 
 #leave-us
   color: $teal-800
-  font-size: 1.3em
+  font-size: rem-calc(20)
 
 abbr[title]
   float: right
