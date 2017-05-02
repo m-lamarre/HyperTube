@@ -1,0 +1,2 @@
+class MoviesController < HomepagesController
+end

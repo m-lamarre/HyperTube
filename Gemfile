@@ -20,6 +20,9 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'will_paginate', '~> 3.1.0'
 
+# APIs
+gem 'httparty'
+
 # Assests: Stylesheets
 gem 'autoprefixer-rails'
 gem 'foundation-rails'
