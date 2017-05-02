@@ -1,3 +1,4 @@
+# This module has been made to use v2 of the YTS api
 module YtsApi
   include HTTParty
   
