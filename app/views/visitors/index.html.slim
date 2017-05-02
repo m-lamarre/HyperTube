@@ -3,17 +3,13 @@
 h1
   | Stream and Download Movies
 
-.gap3
+row.gap3
   ul.index-grid
-    li
-     img.thumbnail.homepage src="#{@random_movies[0][:image_url]}"
-     p = @random_movies[0][:title]
-    li
-      img.thumbnail.homepage src="#{@random_movies[1][:image_url]}"
-      p = @random_movies[1][:title]
-    li
-      img.thumbnail.homepage src="#{@random_movies[2][:image_url]}"
-      p = @random_movies[2][:title]
+    - @random_movies.each do |movie|
+      li
+        img.thumbnail.homepage src="#{movie[:image_url]}"
+        p = movie[:title]
+
 row
   h3.index-grid
     | To use this site 
