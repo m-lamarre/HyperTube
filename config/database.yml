@@ -7,12 +7,10 @@ development: &default
   pool: 5
   timeout: 5000
 
-
 docker:
   adapter: postgresql
   encoding: unicode
   database: Hypertube_docker
-
   pool: 5
   username: postgres
   password:
