@@ -2,12 +2,19 @@
 
 h1
   | Stream and Download Movies
-br
-br
+row
   ul.index-grid
     li
-      img[src='http://placehold.it/200x300']
+     img.thumbnail.homepage src="#{@random_movies[0][:image_url]}"
+     p = @random_movies[0][:title]
     li
-      img[src='http://placehold.it/200x300']
+      img.thumbnail.homepage src="#{@random_movies[1][:image_url]}"
+      p = @random_movies[1][:title]
     li
-      img[src='http://placehold.it/200x300']
+      img.thumbnail.homepage src="#{@random_movies[2][:image_url]}"
+      p = @random_movies[2][:title]
+h3.index-grid
+  | To use this site 
+  = link_to 'Sign Up', new_user_registration_path
+  = ' or '
+  = link_to 'Sign In', new_user_session_path
