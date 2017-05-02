@@ -5,6 +5,7 @@ class User < ApplicationRecord
             uniqueness: true,
             presence: true,
             format:  { with: /^[a-zA-Z0-9_\.]*$/, multiline: true }
+  validates_presence_of :first_name, :last_name
 
   devise :database_authenticatable,
          :registerable,
