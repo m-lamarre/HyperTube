@@ -18,6 +18,8 @@ private
   def serialize_yts_movie(movie)
     m = Hash.new ''
     m[:title] = movie['title']
+    m[:id] = movie['id']
+    m[:source] = 'yts'
     m[:year] = movie['year']
     m[:rating] = movie['rating'] / 2
     m[:runtime] = movie['runtime']
@@ -33,7 +35,7 @@ private
   end
 
   def get_yts_movie_by_id(id = 0)
-    apidata = HTTParty.get("https://yts.ag/api/v2/movie_details.json?movie_id=#{id}")
+    api_data = HTTParty.get("https://yts.ag/api/v2/movie_details.json?movie_id=#{id}")
     api_data['status'] == 'ok' ? serialize_yts_movie(api_data['data']['movie']) : api_data['status_message']
   end
 
