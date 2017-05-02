@@ -5,7 +5,6 @@
     .row.column.log-in-form
       h2.text-center
         | Sign Up
-      .gap
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = f.error_notification
         .form-inputs
