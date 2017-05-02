@@ -7,4 +7,14 @@ module ApplicationHelper
       page_title + ' | ' + base_title
     end
   end
+
+  def oauth_link_name provider
+    if provider == :marvin
+      '42'
+    elsif provider == :google_oauth2
+      'Google'
+    else
+      provider
+    end
+  end
 end
