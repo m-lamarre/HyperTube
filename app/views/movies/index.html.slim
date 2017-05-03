@@ -3,10 +3,17 @@
 h1
   | Movies
 
-row
+.row
+  .small-7.small-centered
+    = will_paginate @yts_count
+
+.row
   ul.index-grid
     - @movies.each do |movie|
       li
         = link_to src = movie_path(id: movie[:id], source: movie[:source])
           img.thumbnail.homepage src="#{movie[:image_url]}"
         p = movie[:title]
+.row
+  .small-7.small-centered
+    = will_paginate @yts_count
