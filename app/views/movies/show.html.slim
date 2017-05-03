@@ -1,0 +1,10 @@
+- provide(:title, @movie[:title])
+
+h1
+  = @movie[:title]
+
+.index-grid
+  img.thumbnail.homepage src="#{@movie[:image_url]}"
+  .row
+    h5
+      = @movie[:description]

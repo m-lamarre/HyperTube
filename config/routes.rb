@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resource :movie, only: %i(show)
+
   authenticated :user do
     root to: 'movies#index'
   end
