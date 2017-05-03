@@ -11,16 +11,18 @@ footer.footer
     .small-6.medium-3.large-3.columns
       = image_tag('align-justify.svg', alt: 'menu icon')
       ul.footer-links
-        li
-          = link_to 'Home', root_path
         - if user_signed_in?
           li
-            = link_to 'Browse Movies', '#'
+            = link_to 'Browse Movies', root_path
+          li
+            = link_to 'Search', '#'
           li
             = link_to 'Edit User Info', edit_user_registration_path
           li
             = link_to 'Logout', destroy_user_session_path, method: :delete
         - else
+          li
+            = link_to 'Home', root_path
           li
             = link_to 'About', '/pages/about'
           li
