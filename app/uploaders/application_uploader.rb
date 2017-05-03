@@ -2,6 +2,8 @@ class ApplicationUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 
+  storage :dropbox
+
   def store_dir
     [
       'hypertube',

@@ -7,7 +7,8 @@ row
   ul.index-grid
     - @random_movies.each do |movie|
       li
-        img.thumbnail.homepage src="#{movie[:image_url]}"
+        = link_to src = movie_path(id: movie[:id], source: movie[:source])
+          img.thumbnail.homepage src="#{movie[:image_url]}"
         p = movie[:title]
 
 row

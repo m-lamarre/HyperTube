@@ -10,7 +10,11 @@ class MoviesController < HomepagesController
     get_movie_by_source
   end
 
+  def play
+  end
+
 private
+
   def get_movie_by_source
     @movie ||= get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
     @movie ||= select_random_movies(1).first

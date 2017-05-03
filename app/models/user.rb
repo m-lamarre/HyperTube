@@ -42,6 +42,7 @@ class User < ApplicationRecord
       user = User.new
       user.email = auth.info.email
       user.get_unique_username(auth.info.email)
+      user.get_firstname_and_lastname(auth)
       user.profile_picture = open auth.info.image
       user.password = Devise.friendly_token[0,20]
       user.provider = auth.provider
@@ -51,6 +52,16 @@ class User < ApplicationRecord
     end
 
     user
+  end
+
+  def get_firstname_and_lastname(auth)
+    if auth.provider == 'marvin'
+      self.first_name = auth.extra.raw_info.first_name
+      self.last_name = auth.extra.raw_info.last_name
+    else
+      self.first_name = auth.info.first_name
+      self.last_name = auth.info.last_name
+    end
   end
 
   def get_unique_username(email)
