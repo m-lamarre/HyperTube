@@ -63,6 +63,9 @@ body
 .gap
   padding: rem-calc(8)
 
+.gap2
+  padding: rem-calc(16)
+
 .gap3
   padding: rem-calc(24)
 
@@ -270,3 +273,21 @@ abbr[title]
 
 #year_rating
   color: $grey-700
+
+.pagination
+  color: $grey-900
+  .previous_page
+    color: $grey-800
+  .next_page
+    color: $grey-800
+  .disabled
+    color: $grey-400
+  .current
+    color: $white
+    background: $topbar-background
+    border-radius: rem-calc(8)
+  a
+    &:hover, &:focus
+      color: $grey-900
+      background: $teal-100
+      border-radius: rem-calc(8)
