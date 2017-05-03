@@ -36,6 +36,7 @@ gem 'uglifier'
 
 # File management
 gem 'carrierwave'
+gem 'carrierwave-dropbox'
 gem 'file_validators'
 gem 'mini_magick'
 
