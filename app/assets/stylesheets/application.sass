@@ -1,7 +1,7 @@
- // *= require_tree .
- // *= require_self
- // *= require foundation
- // *= require foundation_and_overrides
+// *= require_tree .
+// *= require_self
+// *= require foundation
+// *= require foundation_and_overrides
 
 @import settings
 @import foundation
@@ -63,6 +63,9 @@ body
 .gap
   padding: rem-calc(8)
 
+.gap2
+  padding: rem-calc(16)
+
 .gap3
   padding: rem-calc(24)
 
@@ -90,13 +93,18 @@ span.error
 .index-grid
   list-style-type: none
   text-align: center
-
+  img.thumbnail.homepage
+    margin: rem-calc(16)
   li
     display: inline-block
     float: none
-    margin-left: 2em
-    margin-right: 2em
-    margin: .5em
+
+#home_links
+  color: $teal-900
+  a
+    color: $teal-700
+    &:hover, &:active, &:focus
+      color: $teal-500
 
 /* Buttons
 
@@ -112,6 +120,11 @@ span.error
     background: $teal-800
     color: $white
 
+.oauth
+  margin: rem-calc(16)
+  width: rem-calc(152)
+  font-size: rem-calc(13)
+
 /* Header
 
 h1
@@ -119,6 +132,14 @@ h1
   font-size: 3em
   font-weight: bold
   text-align: center
+
+h2
+  color: $body-font-color
+  font-size: 2.5em
+
+h3
+  color: $body-font-color
+  font-size: 2em
 
 .header
   background-size: cover

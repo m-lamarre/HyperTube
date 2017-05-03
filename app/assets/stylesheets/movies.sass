@@ -1,8 +1,36 @@
 @import settings
+@import foundation
+@import application
 
 .thumbnail.homepage
   width: rem-calc(200)
   height: rem-calc(300)
 
-.pagination a
-  display: inline
+#movie_title
+  margin: 0
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  width: rem-calc(231)
+
+#year_rating
+  color: $grey-700
+
+.pagination
+  color: $grey-900
+  .previous_page
+    color: $grey-800
+  .next_page
+    color: $grey-800
+  .disabled
+    color: $grey-400
+  .current
+    color: $white
+    background: $topbar-background
+    border-radius: rem-calc(8)
+  a
+    display: inline
+    &:hover, &:focus
+      color: $grey-900
+      background: $teal-100
+      border-radius: rem-calc(8)

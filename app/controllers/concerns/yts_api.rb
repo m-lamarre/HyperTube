@@ -3,7 +3,7 @@ module YtsApi
   include HTTParty
 
   @total_yts_movie_count ||= 0
-  
+
 private
 
   def serialize_yts_torrent(torrent)
@@ -23,7 +23,7 @@ private
     m[:id] = movie['id']
     m[:source] = 'yts'
     m[:year] = movie['year']
-    m[:rating] = movie['rating'] / 2
+    m[:rating] = movie['rating']
     m[:runtime] = movie['runtime']
     m[:genres] = movie['genres']
     m[:description] = movie['description_full']
