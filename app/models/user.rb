@@ -1,8 +1,12 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
-  # validates_presence_of :username
+  validates :username,
+            uniqueness: true,
+            presence: true,
+            format:  { with: /^[a-zA-Z0-9_\.]*$/, multiline: true }
+  validates_presence_of :first_name, :last_name
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -11,7 +15,7 @@ class User < ApplicationRecord
          :validatable,
          :confirmable,
          :lockable,
-         :omniauthable, omniauth_providers: %i(google_oauth2)
+         :omniauthable, omniauth_providers: %i(google_oauth2 marvin)
 
   mount_uploader :profile_picture, AvatarUploader
 
@@ -33,10 +37,28 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user = where(provider: auth.provider, uid: auth.uid).first
+    if user.blank?
+      user = User.new
       user.email = auth.info.email
+      user.get_unique_username(auth.info.email)
+      user.profile_picture = open auth.info.image
       user.password = Devise.friendly_token[0,20]
+      user.provider = auth.provider
+      user.uid = auth.uid
       user.skip_confirmation!
+      user.save!
+    end
+
+    user
+  end
+
+  def get_unique_username(email)
+    self.username = email.split('@').first
+    num = 2
+    until(User.find_by(username: self.username).blank?)
+      self.username = "#{username}#{num}"
+      num += 1
     end
   end
 end

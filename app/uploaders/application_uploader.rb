@@ -1,9 +1,6 @@
-class ApplicationUploader < CarrierWave::Uploader::GoogleDrive
+class ApplicationUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
-
-  google_login ENV['gmail_username']
-  google_password ENV['gmail_password']
 
   def store_dir
     [

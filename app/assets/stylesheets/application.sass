@@ -50,14 +50,30 @@ body
   font-family: $body-font-family
   overflow: scroll
 
+.site
+  display: flex
+  min-height: 100vh
+  flex-direction: column
+
+.content-wrapper
+  flex: 1
+  margin-top: rem-calc(24)
+  margin-bottom: rem-calc(24)
+
+.gap
+  padding: rem-calc(8)
+
+.gap3
+  padding: rem-calc(24)
+
 .alert
   color: $alert
-  font-size: 1.1em
+  font-size: rem-calc(16)
   text-align: center
 
 .notice
   color: $success
-  font-size: 1.1em
+  font-size: rem-calc(16)
   text-align: center
 
 .error_notification
@@ -115,10 +131,7 @@ h1
 
   .headline
     color: $text-color
-
-  .small-headline
-    color: $grey-400
-    font-size: 0.7em
+    margin-bottom: rem-calc(16)
 
 .header-subnav
   bottom: 0
@@ -154,11 +167,8 @@ h1
 
 .footer
   background-color: $topbar-background
-  bottom: 0px
   color: $text-color
-  // height: rem-calc(300)
   padding: 2rem 4rem
-  // position: fixed
   text-align: center
   width: 100%
 
@@ -195,6 +205,7 @@ h1
     margin-top: .5em
 
 #copyright
+  margin-top: rem-calc(40)
   color: $text-color
   font-size: .7em
   list-style-type: none
@@ -212,17 +223,20 @@ h1
   color: $teal-900
   font-size: rem-calc(16)
   line-height: rem-calc(24)
-  &:hover
+  &:hover, &:focus
     color: $teal-700
 
 .inline-links
   display: inline
 
 #leave-us
-  color: $teal-800
-  font-size: 1.3em
+  color: $teal-900
+  font-size: rem-calc(24)
 
 abbr[title]
   float: right
   text-decoration: none
   color: $black
+
+.small-hint
+  font-size: rem-calc(12)

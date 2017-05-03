@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '~> 2.4.0'
+ruby '2.4.1'
 
 gem 'rails', '~> 5.0.2'
 
@@ -20,6 +20,9 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'will_paginate', '~> 3.1.0'
 
+# APIs
+gem 'httparty'
+
 # Assests: Stylesheets
 gem 'autoprefixer-rails'
 gem 'foundation-rails'
@@ -33,7 +36,6 @@ gem 'uglifier'
 
 # File management
 gem 'carrierwave'
-gem 'carrierwave-google_drive'
 gem 'file_validators'
 gem 'mini_magick'
 
