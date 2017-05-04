@@ -209,7 +209,6 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    onedrive (0.1.0)
     orm_adapter (0.5.0)
     paperclip (5.0.0)
       activemodel (>= 4.2.0)
@@ -399,7 +398,6 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.4.1)
   omniauth-marvin (~> 1.0.2)
   omniauth-microsoft_v2_auth!
-  onedrive
   paperclip (~> 5.0.0)
   pg
   postmark-rails (~> 0.15.0)

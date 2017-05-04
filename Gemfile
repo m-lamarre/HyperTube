@@ -39,7 +39,6 @@ gem 'carrierwave'
 gem 'carrierwave-dropbox'
 gem 'file_validators'
 gem 'mini_magick'
-gem 'onedrive'
 
 # Omniauth
 gem 'omniauth-facebook', '~> 4.0.0'
