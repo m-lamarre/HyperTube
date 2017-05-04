@@ -44,6 +44,7 @@ gem 'mini_magick'
 gem 'omniauth-facebook', '~> 4.0.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'omniauth-marvin', '~> 1.0.2'
+gem 'omniauth-microsoft_v2_auth'
 
 # Misc
 gem 'faker'
