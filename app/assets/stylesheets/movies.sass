@@ -2,9 +2,14 @@
 @import foundation
 @import application
 
-.thumbnail.homepage
-  width: rem-calc(200)
+.thumbnail
   height: rem-calc(300)
+  width: rem-calc(200)
+  &.homepage
+    margin: rem-calc(16)
+  &.show
+    @media only screen and (min-width: 40em)
+      float: right
 
 #movie_title
   margin: 0
@@ -30,10 +35,46 @@
   .current
     color: $white
     background: $topbar-background
-    border-radius: rem-calc(8)
+    border-radius: $standard-radius
   a
     display: inline
     &:hover, &:focus
       color: $grey-900
       background: $teal-100
-      border-radius: rem-calc(8)
+      border-radius: $standard-radius
+
+/* Movie Show Page
+
+.card
+  border-radius: $standard-radius
+  box-shadow: $box-shadow
+
+.card-divider
+  border-radius: $standard-radius
+
+.card-section
+  margin: 0 rem-calc(24) 0 rem-calc(24)
+
+#movie_description
+  text-align: justify
+
+#movie_details
+  padding: 0 rem-calc(24) 0 rem-calc(24)
+
+$total-columns: 12
+
+// xlarge queries (1441px to 1920px)
+@media only screen and (min-width: 90.063em) and (max-width: 120em)
+  @for $i from 1 through $total-columns
+    .xlarge-divide-#{$i}
+      width: #{100 / $i}% !important
+    .xlarge-#{$i}
+      width: #{(100/$total-columns)*$i}% !important
+
+// xxlarge queries (1921px up)
+@media only screen and (min-width: 120em)
+  @for $i from 1 through $total-columns
+    .xxlarge-divide-#{$i}
+      width: #{100 / $i}% !important
+    .xxlarge-#{$i}
+      width: #{(100/$total-columns)*$i}% !important
