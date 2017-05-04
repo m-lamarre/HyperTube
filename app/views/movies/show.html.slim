@@ -1,6 +1,7 @@
 - provide(:title, @movie[:title])
 
-.row.flex-container.card.small-11.small-centered.medium-10.medium-centered.large-7.large-centered.xlarge-6.xxlarge-5
+.row.flex-container
+.card.small-11.small-centered.medium-10.medium-centered.large-7.large-centered.xlarge-6.xxlarge-5
   .card-divider
     .row.text-center
       h2
@@ -32,7 +33,3 @@
       p#movie_description
         = @movie[:description]
       hr
-  .card-section
-    .row
-      | Comments Section
-      textarea[rows="6"]
