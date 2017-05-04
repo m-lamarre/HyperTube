@@ -1,3 +1,9 @@
+PATH
+  remote: lib/omniauth-microsoft_v2_auth
+  specs:
+    omniauth-microsoft_v2_auth (0.1.0)
+      omniauth-oauth2
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -391,6 +397,7 @@ DEPENDENCIES
   omniauth-facebook (~> 4.0.0)
   omniauth-google-oauth2 (~> 0.4.1)
   omniauth-marvin (~> 1.0.2)
+  omniauth-microsoft_v2_auth!
   paperclip (~> 5.0.0)
   pg
   postmark-rails (~> 0.15.0)
