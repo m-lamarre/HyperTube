@@ -1,7 +1,10 @@
 class Putio
 
-  def self.list
-    JSON.parse RestClient.get('https://api.put.io/v2/files/list', default_query) rescue { error: 'failed to list files' }
+  def self.list(id = ENV['PUTIO_DIR_ID'])
+    query = default_query
+    query[:params][:parent_id] = id
+
+    JSON.parse RestClient.get('https://api.put.io/v2/files/list', query) rescue { error: 'failed to list files' }
   end
 
   def self.upload(url)
@@ -43,6 +46,13 @@ class Putio
         { error: 'file not found' }
       end
     end
+  end
+
+  def self.find_id_of_movie_in_folder(id)
+    response = self.list(id)
+
+    # searches for videos, sorts them from biggest to smallest, and selects the id of the first one
+    response['files'].select { |file| file['file_type'] == 'VIDEO' }.sort_by { |file| -file['size'] }.first['id'] rescue { error: 'failed to find video' }
   end
 
   private
