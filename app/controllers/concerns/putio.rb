@@ -1,4 +1,4 @@
-lkclass Putio
+class Putio
 
   def self.list
     RestClient.get('https://api.put.io/v2/files/list', default_query)
