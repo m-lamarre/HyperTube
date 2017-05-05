@@ -7,7 +7,6 @@ class MoviesController < HomepagesController
   end
 
   def show
-    binding.pry
     get_movie_by_source
   end
 
