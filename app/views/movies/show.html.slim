@@ -17,7 +17,7 @@
         .gap
         strong
           = 'Genre: '
-        = @movie[:genres]
+        = @movie[:genres].join(' / ')
         .gap
         strong
           = 'Runtime: '
