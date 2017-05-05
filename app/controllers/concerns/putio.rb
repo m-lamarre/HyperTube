@@ -63,6 +63,12 @@ class Putio
     JSON.parse RestClient.get('https://api.put.io/v2/files/search/' , query) rescue { error: 'failed to search for the item' }
   end
 
+  def self.find_and_download(name)
+    id = self.search(name)['files'].first['id']
+    id = self.find_id_of_movie_in_folder(id)
+    self.download(id)
+  end
+
   private
 
     def self.default_query
