@@ -43,7 +43,7 @@ class Putio
       if [301, 302, 307].include? response.code
         response.headers[:location]
       else
-        { error: 'file not found' }
+        { error: 'file not found. Can\'t download folders' }
       end
     end
   end
