@@ -64,8 +64,7 @@ class Putio
   end
 
   def self.find_and_download(name)
-    id = self.search(name)['files'].first['id']
-    id = self.find_id_of_movie_in_folder(id)
+    id = self.search(name)['files'].select { |result| result['file_type'] == 'VIDEO' }.sort_by { |file| -file['size'] }.first['id'] rescue { error: 'failed to find video' }
     self.download(id)
   end
 
