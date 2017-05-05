@@ -13,15 +13,15 @@ h1
       li
         = link_to src = movie_path(id: movie[:id], source: movie[:source])
           img.thumbnail.homepage src="#{movie[:image_url]}"
-        p#movie_title
-          = movie[:title]
+          p#movie_title
+            = movie[:title]
         small#year_rating
           = ' ('
           = movie[:year]
           = ') IMDB Rating: '
           = movie[:rating]
 
-.gap2
+.gap
 .row.text-center
   .small-11.small-centered
     = will_paginate @yts_count
