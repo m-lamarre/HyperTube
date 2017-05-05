@@ -70,12 +70,12 @@ class Putio
 
   private
 
-    def self.default_query
-      {
-        params: {
-          oauth_token: ENV['PUTIO_TOKEN'],
-          parent_id:   ENV['PUTIO_DIR_ID']
-        }
+  def self.default_query
+    {
+      params: {
+        oauth_token: ENV['PUTIO_TOKEN'],
+        parent_id:   ENV['PUTIO_DIR_ID']
       }
-    end
+    }
+  end
 end
