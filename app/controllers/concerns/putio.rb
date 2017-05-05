@@ -10,7 +10,7 @@ class Putio
   def self.upload(url)
     query = default_query[:params]
     query[:url] = url
-    query[:callback_url] = nil
+    query[:save_parent_id] = ENV['PUTIO_DIR_ID']
 
     JSON.parse RestClient.post('https://api.put.io/v2/transfers/add', query) rescue { error: 'failed to upload' }
   end
@@ -19,7 +19,7 @@ class Putio
     JSON.parse RestClient.get("https://api.put.io/v2/files/#{id}", default_query) rescue { error: 'file not found' }
   end
 
-  def self.delete_file(id)
+  def self.delete(id)
     query = default_query[:params]
     query[:file_ids] = id.to_s
 
@@ -53,6 +53,14 @@ class Putio
 
     # searches for videos, sorts them from biggest to smallest, and selects the id of the first one
     response['files'].select { |file| file['file_type'] == 'VIDEO' }.sort_by { |file| -file['size'] }.first['id'] rescue { error: 'failed to find video' }
+  end
+
+  def self.search(search_query, query_type = 'FOLDER')
+    query = default_query
+    query[:params][:query] = search_query
+    query[:params][:type] = query_type
+
+    JSON.parse RestClient.get('https://api.put.io/v2/files/search/', query)
   end
 
   private
