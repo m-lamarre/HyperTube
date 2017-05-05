@@ -31,10 +31,11 @@ $grey-800: #424242
 $grey-900: #212121
 
 $alert: #FF0000
-$btn-radius: 5px
+$box-shadow: 0 0.5em 1.6em -0.125em rgba(10, 10, 10, 0.2)
 $btn-shadow: 0.3rem 0.3rem 0.3rem
 $header-height: 2rem
 $shadow: $teal-900
+$standard-radius: rem-calc(8)
 $subnav-font-size: 0.75rem
 $subnav-link-opacity: 0.15
 $subnav-link-padding: 0.9rem
@@ -93,11 +94,10 @@ span.error
 .index-grid
   list-style-type: none
   text-align: center
-  img.thumbnail.homepage
-    margin: rem-calc(16)
   li
     display: inline-block
     float: none
+    margin-bottom: rem-calc(8)
 
 #home_links
   color: $teal-900
@@ -110,7 +110,7 @@ span.error
 
 .button
   background-color: $teal-500
-  border-radius: $btn-radius
+  border-radius: $standard-radius
   box-shadow: $shadow $btn-shadow
   font-family: $body-font-family
   transition: background-color 0.25s ease-out, color 0.25s ease-out
@@ -178,7 +178,7 @@ h3
 
       &:hover
         background: rgba(250, 250, 250, $subnav-link-opacity)
-        border-radius: rem-calc(5)
+        border-radius: $standard-radius
         transition: $transition
 
 /* Footer
@@ -193,14 +193,6 @@ h3
   text-align: center
   width: 100%
 
-  h4
-    color: $text-color
-    font-size: 1em
-    font-weight: 400
-    margin-bottom: rem-calc(10)
-    margin-top: 2.5rem
-    text-transform: uppercase
-
   p
     color: $text-color
     font-size: .8em
@@ -210,10 +202,11 @@ h3
     color: $text-color
     font-size: .8em
     font-weight: 300
+    transition: $transition
 
     &:hover
       background: rgba(250, 250, 250, $subnav-link-opacity)
-      border-radius: rem-calc(5)
+      border-radius: $standard-radius
       padding: $subnav-link-padding 1rem
       transition: $transition
 
