@@ -1,7 +1,7 @@
-lkclass Putio
+class Putio
 
   def self.list
-    RestClient.get('https://api.put.io/v2/files/list', default_query)
+    JSON.parse RestClient.get('https://api.put.io/v2/files/list', default_query)
   end
 
   def self.upload(url='https://yts.ag/torrent/download/B1671B938EB021B2B4505ECAD8789C6B4C30624C')
