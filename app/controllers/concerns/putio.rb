@@ -38,9 +38,9 @@ class Putio
   def self.download(id)
     RestClient.get("https://api.put.io/v2/files/#{id}/download", default_query) do |response, request, result, &block|
       if [301, 302, 307].include? response.code
-        redirected_url = response.headers[:location]
+        response.headers[:location]
       else
-        error: 'file not found'
+        { error: 'file not found' }
       end
     end
   end
