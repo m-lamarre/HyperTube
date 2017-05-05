@@ -27,7 +27,7 @@ class Putio
   end
 
   def self.get_torrent_status(torrent_id)
-    JSON.parse RestClient.get("https://api.put.io/v2/transfers/#{torrent_id}", default_query)
+    JSON.parse RestClient.get("https://api.put.io/v2/transfers/#{torrent_id}", default_query) rescue { error: 'failed to get torrent' }
   end
 
   def self.share(id)
@@ -35,7 +35,7 @@ class Putio
     query[:file_ids] = id.to_s
     query[:friends] = 'everyone'
 
-    JSON.parse RestClient.post('https://api.put.io/v2/files/share', query)
+    JSON.parse RestClient.post('https://api.put.io/v2/files/share', query) rescue { error: 'failed to share item' }
   end
 
   def self.download(id)
@@ -60,7 +60,7 @@ class Putio
     query[:params][:query] = search_query
     query[:params][:type] = query_type
 
-    JSON.parse RestClient.get('https://api.put.io/v2/files/search/', query)
+    JSON.parse RestClient.get('https://api.put.io/v2/files/search/' , query) rescue { error: 'failed to search for the item' }
   end
 
   private
