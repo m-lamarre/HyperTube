@@ -22,6 +22,7 @@ gem 'will_paginate', '~> 3.1.0'
 
 # APIs
 gem 'httparty'
+gem 'rest-client'
 
 # Assests: Stylesheets
 gem 'autoprefixer-rails'
