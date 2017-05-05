@@ -1,8 +1,23 @@
+- provide(:title, 'Movie Player')
+
+.row.text-center
+  h2
+    | Movie Title
+.gap
+
 .row
-  .small-7.columns.small-centered
+  .small-6.small-centered
     video#my-player.video-js[controls preload='auto' data-setup='{}']
       source src='http://techslides.com/demos/sample-videos/small.mp4' type='video/mp4'
       p.vjs-no-js
         |  To view this video please enable JavaScript, and consider upgrading to a web browser that 
         a href='http://videojs.com/html5-video-support/' target='_blank'
-          |  supports HTML5 video 
+          |  supports HTML5 video
+.gap3
+
+.row.flex-container
+.card.small-11.small-centered.medium-10.medium-centered.large-7.large-centered.xlarge-6.xxlarge-5
+  .card-divider
+    .row#comments_section
+      | Comments Section
+      textarea
