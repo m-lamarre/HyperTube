@@ -43,7 +43,7 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.get_unique_username(auth.info.email)
       user.get_firstname_and_lastname(auth)
-      user.profile_picture = open auth.info.image
+      user.profile_picture = auth.info.image
       user.password = Devise.friendly_token[0,20]
       user.provider = auth.provider
       user.uid = auth.uid
