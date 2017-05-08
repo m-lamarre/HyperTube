@@ -29,8 +29,9 @@
         = @movie[:rating]
         = ' / 10'
         .gap
-          a href="/movie/play/#{@movie[:source]}/#{@movie[:id]}"
-            button.button Play
+        a href="/movie/play/#{@movie[:source]}/#{@movie[:id]}"
+          button.button.movie_quality 720p
+          button.button.movie_quality 1080p
   .card-section
     .row
       p#movie_description
