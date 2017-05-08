@@ -387,8 +387,8 @@ body.vjs-full-window {
 .video-js:hover .vjs-big-play-button,
 .video-js .vjs-big-play-button:focus {
   outline: 0;
-  border-color: #fff;
-  background-color: #73859f;
+  border-color: #B2DFDB;
+  background-color: #E0F2F1;
   background-color: rgba(115, 133, 159, 0.5);
   -webkit-transition: all 0s;
   -moz-transition: all 0s;
@@ -404,7 +404,7 @@ body.vjs-full-window {
 .video-js button {
   background: none;
   border: none;
-  color: inherit;
+  color: #26A69A;
   display: inline-block;
   overflow: visible;
   font-size: inherit;
@@ -705,7 +705,7 @@ body.vjs-full-window {
   display: none; }
 
 .video-js .vjs-play-progress {
-  background-color: #fff; }
+  background-color: #80CBC4; }
   .video-js .vjs-play-progress:before {
     position: absolute;
     top: -0.333333333333333em;
@@ -720,11 +720,11 @@ body.vjs-full-window {
   position: absolute;
   top: -3.4em;
   right: -1.9em;
-  font-size: 0.9em;
-  color: #000;
+  font-size: 1em;
+  color: #004D40;
   content: attr(data-current-time);
   padding: 6px 8px 8px 8px;
-  background-color: #fff;
+  background-color: #E0F2F1;
   background-color: rgba(255, 255, 255, 0.8);
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
@@ -798,8 +798,8 @@ body.vjs-full-window {
   cursor: pointer;
   padding: 0;
   margin: 0 0.45em 0 0.45em;
-  background-color: #73859f;
-  background-color: rgba(115, 133, 159, 0.5); }
+  background-color: #004D40;
+  background-color: rgba(0, 77, 64, 0.5); }
 
 .video-js .vjs-slider:focus {
   text-shadow: 0em 0em 1em white;
@@ -848,7 +848,7 @@ body.vjs-full-window {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #fff; }
+  background-color: #80CBC4; }
   .video-js .vjs-volume-level:before {
     position: absolute;
     font-size: 0.9em; }
