@@ -28,6 +28,9 @@
           = 'IMDB Rating: '
         = @movie[:rating]
         = ' / 10'
+        .gap
+          a href="/movie/play/#{@movie[:source]}/#{@movie[:id]}"
+            button.button Play
   .card-section
     .row
       p#movie_description
