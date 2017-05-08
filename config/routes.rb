@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   get 'movie/:source/:id', to: 'movies#show'
 
-  get 'movie/play/:source/:id', to: 'movies#play' #FIXME Needs to be removed
   get 'movie/play/:source/:id/:quality', to: 'movies#play'
 
   authenticated :user do
