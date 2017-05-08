@@ -1,7 +1,7 @@
 - provide(:title, 'About')
 
 .row
-  .medium-6.medium-centered.large-4.large-centered.columns
+  .small-11.small-centered.medium-6.medium-centered.large-4.large-centered.columns
     .row.column
       h3.text-center
         | About the Website
@@ -20,3 +20,8 @@
         |  and 
         = link_to('Foundation Front-End Framework', 'http://foundation.zurb.com/sites.html', target: '_blank', class: 'links')
         | .
+      .gap
+      p.text-center
+        | Please see our website 
+        = link_to('Terms and Conditions', '/pages/terms_and_conditions', class: 'links')
+        |  for more information.
