@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resource :movie, only: %i(show)
 
-  get 'movie/play', to: 'movies#play'
+  get 'movie/:source/:id', to: 'movies#show'
+
+  get 'movie/play/:source/:id/:quality', to: 'movies#play'
 
   authenticated :user do
     root to: 'movies#index'
