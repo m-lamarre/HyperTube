@@ -11,23 +11,31 @@
       .column.medium-6.text-center
         img.thumbnail.show src="#{@movie[:image_url]}"
       .column.medium-6#movie_details
-        strong
-          = 'Year: '
-        = @movie[:year]
-        .gap
-        strong
-          = 'Genre: '
-        = @movie[:genres]
-        .gap
-        strong
-          = 'Runtime: '
-        = @movie[:runtime]
-        = ' mins'
-        .gap
-        strong
-          = 'IMDB Rating: '
-        = @movie[:rating]
-        = ' / 10'
+        .section
+          strong
+            = 'Year: '
+          = @movie[:year]
+
+        .section
+          strong
+            = 'Genre: '
+          = @movie[:genres]
+
+        .section
+          strong
+            = 'Runtime: '
+          = @movie[:runtime]
+          = ' mins'
+
+        .section
+          strong
+            = 'IMDB Rating: '
+          = @movie[:rating]
+          = ' / 10'
+
+        .section
+          a href="/movie/play/#{@movie[:source]}/#{@movie[:id]}"
+            button.button Play
   .card-section
     .row
       p#movie_description

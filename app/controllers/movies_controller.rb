@@ -15,8 +15,9 @@ class MoviesController < HomepagesController
 
 private
 
-  def get_movie_by_source
-    @movie ||= get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
-    @movie ||= select_random_movies(1).first
-  end
+def get_movie_by_source
+  @movie ||= get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
+  @movie ||= select_random_movies(1).first
+end
+
 end
