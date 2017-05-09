@@ -1,3 +1,25 @@
+/* Colors Used for Player
+#212121 - player controls background color
+#B2DFDB - border-color
+
+#E0F2F1 - button background-color
+#26A69A - button color
+#00695C - button border color
+
+#80CBC4 - play progress color
+
+#E0F2F1 - tooltip background-color
+#004D40 - video player tooltip number color
+#212121 - mouse tooltip background-color
+#E0F2F1 - mouse tooltip number color
+
+#80CBC4 - progress bar color
+#004D40 - progress bar background-color
+
+#80CBC4 - volume color
+#004D40 - volume background-color
+*/
+
 .video-js .vjs-big-play-button:before, .video-js .vjs-control:before, .video-js .vjs-modal-dialog, .vjs-modal-dialog .vjs-modal-dialog-content {
   position: absolute;
   top: 0;
@@ -367,9 +389,9 @@ body.vjs-full-window {
   padding: 0;
   cursor: pointer;
   opacity: 1;
-  border: 0.06666em solid #fff;
-  background-color: #2B333F;
-  background-color: rgba(43, 51, 63, 0.7);
+  border: 0.06666em solid #00695C;
+  background-color: #004D40;
+  background-color: rgba(0, 77, 64, 0.4);
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
   border-radius: 0.3em;
@@ -389,7 +411,7 @@ body.vjs-full-window {
   outline: 0;
   border-color: #B2DFDB;
   background-color: #E0F2F1;
-  background-color: rgba(115, 133, 159, 0.5);
+  background-color: rgba(224, 242, 241, 0.5);
   -webkit-transition: all 0s;
   -moz-transition: all 0s;
   -o-transition: all 0s;
@@ -563,8 +585,8 @@ body.vjs-full-window {
   left: 0;
   right: 0;
   height: 3.0em;
-  background-color: #2B333F;
-  background-color: rgba(43, 51, 63, 0.7); }
+  background-color: #212121;
+  background-color: rgba(33, 33, 33, 0.7); }
 
 .vjs-has-started .vjs-control-bar {
   display: -webkit-box;
@@ -788,9 +810,9 @@ body.vjs-full-window {
 
 .vjs-mouse-display .vjs-time-tooltip,
 .video-js .vjs-progress-control .vjs-mouse-display:after {
-  color: #fff;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, 0.8); }
+  color: #E0F2F1;
+  background-color: #212121;
+  background-color: rgba(33, 33, 33, 0.8); }
 
 .video-js .vjs-slider {
   outline: 0;
