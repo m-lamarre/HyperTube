@@ -12,6 +12,12 @@ class MoviesController < HomepagesController
 
   def play
     get_movie_from_database
+    if Putio.search(@movie.title)['files'].empty? do
+      @movie.stored_at = Time.now
+      @movie.stored = true
+      Putio.upload(@movie.url)
+      @movie.save!
+    end
   end
 
 private
