@@ -27,11 +27,17 @@ class Putio
   end
 
   def self.delete_old
-    list = self.list
+    list = self.list['files']
 
     list.each do |movie|
       self.delete(movie['id']) if (movie['created_at'] < 1.month.ago)
     end
+  end
+
+  def self.clean_up
+    list = self.list
+
+
   end
 
   def self.get_torrent_status(torrent_id)
