@@ -23,7 +23,7 @@ private
 
   def find_and_save_movie
     movie_from_source = get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
-    movie = save_movie_to_database
+    movie = save_movie_to_database(movie_from_source)
   end
 
   def save_movie_to_database(movie_from_source)
@@ -42,7 +42,7 @@ private
   end
 
   def get_movie
-    @movie = Movie.find_by(params[:source], params[:id], params[:quality])
+    @movie = Movie.find_by(source: params[:source], movie_id: params[:id], quality: params[:quality])
     @movie ||= find_and_save_movie
   end
 
