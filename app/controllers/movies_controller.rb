@@ -12,6 +12,7 @@ class MoviesController < HomepagesController
 
   def play
     get_movie_from_database
+    Putio.upload(@movie.url)
   end
 
 private
