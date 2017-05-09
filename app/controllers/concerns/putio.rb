@@ -26,6 +26,14 @@ class Putio
     JSON.parse RestClient.post('https://api.put.io/v2/files/delete', query) rescue { error: 'failed to delete file' }
   end
 
+  def self.delete_old
+    list = self.list
+
+    list.each do |movie|
+      self.delete(movie['id']) if (movie['created_at'] < 1.month.ago)
+    end
+  end
+
   def self.get_torrent_status(torrent_id)
     JSON.parse RestClient.get("https://api.put.io/v2/transfers/#{torrent_id}", default_query) rescue { error: 'failed to get torrent' }
   end
