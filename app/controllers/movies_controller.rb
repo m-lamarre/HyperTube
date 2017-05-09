@@ -11,7 +11,7 @@ class MoviesController < HomepagesController
   end
 
   def play
-    get_movie
+    get_movie_from_database
   end
 
 private
@@ -41,7 +41,7 @@ private
     )
   end
 
-  def get_movie
+  def get_movie_from_database
     @movie = Movie.find_by(source: params[:source], movie_id: params[:id], quality: params[:quality])
     @movie ||= find_and_save_movie
   end
