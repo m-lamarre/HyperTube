@@ -29,9 +29,10 @@
         = @movie[:rating]
         = ' / 10'
         .gap
+        .movie_buttons
           - @movie[:torrents].each do |torrent|
             a href="/movie/play/#{@movie[:source]}/#{@movie[:id]}/#{torrent[:quality]}"
-              button.button
+              button.button.movie_quality
                 = torrent[:quality]
   .card-section
     .row
