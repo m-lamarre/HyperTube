@@ -1,4 +1,4 @@
-class Putio
+module Putio
 
   def self.list(id = ENV['PUTIO_DIR_ID'])
     query = default_query
@@ -34,11 +34,11 @@ class Putio
     end
   end
 
-  def self.clean_up
-    list = self.list
+  # def self.clean_up
+  #   list = self.list
 
-
-  end
+  #   list.sort_by { |f| -f['created_at'] }
+  # end
 
   def self.get_torrent_status(torrent_id)
     JSON.parse RestClient.get("https://api.put.io/v2/transfers/#{torrent_id}", default_query) rescue { error: 'failed to get torrent' }
