@@ -32,13 +32,20 @@ module Putio
     list.each do |movie|
       self.delete(movie['id']) if (movie['created_at'] < 1.month.ago)
     end
+    'Deleted old movies.'
   end
 
-  # def self.clean_up
-  #   list = self.list
+  def self.cleanup
+    list = self.list['files'].sort_by { |f| -f['created_at'] }
+    total_size = 0
 
-  #   list.sort_by { |f| -f['created_at'] }
-  # end
+    list.each { |f| total_size += f['size'] }
+    while total_size > (ENV['PUTIO_MAX_STORAGE'] || 10.gigabytes) do
+      total_size -= list.first['size']
+      self.delete(list.shift['id'])
+    end
+    'Cleaned up movies folder.'
+  end
 
   def self.get_torrent_status(torrent_id)
     JSON.parse RestClient.get("https://api.put.io/v2/transfers/#{torrent_id}", default_query) rescue { error: 'failed to get torrent' }
