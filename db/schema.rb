@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509135847) do
+ActiveRecord::Schema.define(version: 20170510125007) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_comments_on_movie_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string   "title",      default: "",    null: false
@@ -74,6 +84,8 @@ ActiveRecord::Schema.define(version: 20170509135847) do
     t.index ["user_id"], name: "index_watched_movies_on_user_id", using: :btree
   end
 
+  add_foreign_key "comments", "movies"
+  add_foreign_key "comments", "users"
   add_foreign_key "watched_movies", "movies"
   add_foreign_key "watched_movies", "users"
 end
