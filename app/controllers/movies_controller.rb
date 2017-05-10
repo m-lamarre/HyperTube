@@ -20,7 +20,6 @@ class MoviesController < HomepagesController
       @movie.stored = true
       putio_response = Putio.upload(@movie.url)
       redirect_to root_url if putio_response[:error]
-      binding.pry
       @movie.folder_name = putio_response['transfer']['name']
       @movie.save!
     end

@@ -4,7 +4,6 @@ class Api::V1::MovieDownloaderController < MoviesController
 
   def get_download_url
     movie = get_movie_from_database
-    binding.pry
     puts Putio.find_and_download(movie.folder_name)
     respond_with 'error'
   end
