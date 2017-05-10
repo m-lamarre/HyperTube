@@ -2,17 +2,18 @@
 
 .row.text-center
   h2
-    | Movie Title
+    = @movie.title
 .gap
 
 .row
   .small-6.small-centered
-    video#my_player.video-js[controls preload='auto' data-setup='{}']
+    video.video-js.vjs-big-play-centered.vjs-4-3[controls preload='auto' data-setup='{}' poster='https://unsplash.it/560/320?image=668']
       source src='http://techslides.com/demos/sample-videos/small.mp4' type='video/mp4'
       p.vjs-no-js
         |  To view this video please enable JavaScript, and consider upgrading to a web browser that 
         a href='http://videojs.com/html5-video-support/' target='_blank'
           |  supports HTML5 video
+
 .gap3
 
 .row.flex-container
@@ -20,4 +21,13 @@
   .card-divider
     .row#comments_section
       | Comments Section
-      textarea
+      = simple_form_for @comment, url: "/movie/play/#{@movie.source}/#{@movie.id}/#{@movie.quality}/comment", method: :post do |f|
+        = f.input :comment, label: 'Add Comment', required: false
+        = f.button :submit
+      - @movie.comments.each do |comment|
+        .card-divider
+          .row
+            - user = "#{comment.user.first_name} #{comment.user.last_name}"
+            = user == ' ' ? 'Anonymous' : user
+            .row
+            = comment.comment

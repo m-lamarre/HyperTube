@@ -1,4 +1,4 @@
-class Putio
+module Putio
 
   def self.list(id = ENV['PUTIO_DIR_ID'])
     query = default_query
@@ -24,6 +24,28 @@ class Putio
     query[:file_ids] = id.to_s
 
     JSON.parse RestClient.post('https://api.put.io/v2/files/delete', query) rescue { error: 'failed to delete file' }
+  end
+
+  def self.delete_old
+    list = self.list['files']
+
+    list.each do |movie|
+      self.delete(movie['id']) if (movie['created_at'] < 1.month.ago)
+    end
+    'Deleted old movies.'
+  end
+
+  def self.cleanup
+    list = self.list['files'].sort_by { |f| -f['created_at'] }
+    total_size = 0
+    max_size = ((ENV['PUTIO_MAX_STORAGE'] && ENV['PUTIO_MAX_STORAGE'].to_i) || 10.gigabytes)
+
+    list.each { |f| total_size += f['size'] }
+    while total_size > max_size do
+      total_size -= list.first['size']
+      self.delete(list.shift['id'])
+    end
+    "Cleaned up movies folder. Current size: #{total_size / (1024 ** 3)}GB"
   end
 
   def self.get_torrent_status(torrent_id)
@@ -66,6 +88,14 @@ class Putio
   def self.find_and_download(name)
     id = self.search(name)['files'].select { |result| result['file_type'] == 'VIDEO' }.sort_by { |file| -file['size'] }.first['id'] rescue { error: 'failed to find video' }
     self.download(id)
+  end
+
+  def self.folder_size
+    list = self.list['files']
+    total_size = 0
+
+    list.each { |f| total_size += f['size'] }
+    total_size
   end
 
   private
