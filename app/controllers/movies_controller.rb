@@ -15,12 +15,13 @@ class MoviesController < HomepagesController
     get_movie_from_database
     @comment = Comment.new
     add_movie_to_watch_list(@movie.id)
+    puts @movie.folder_name
     if Putio.search(@movie.folder_name)['files'].empty?
       @movie.stored_at = Time.now
       @movie.stored = true
       putio_response = Putio.upload(@movie.url)
       redirect_to root_url if putio_response[:error]
-      @movie.folder_name = putio_response['transfer']['name']
+      @movie.folder_name = putio_response['transfer']['name'].gsub('[YTS.AG]', '[YTS AG]')
       @movie.save!
     end
   end
