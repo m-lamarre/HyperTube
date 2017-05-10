@@ -19,13 +19,12 @@ class MoviesController < HomepagesController
       @movie.stored = true
       putio_response = Putio.upload(@movie.url)
       redirect_to root_url if putio_response[:error]
-      binding.pry
       @movie.folder_name = putio_response['transfer']['name']
       @movie.save!
     end
   end
 
-private
+  private
 
   def add_movie_to_watch_list(id)
     current_user.movie_ids += [id]

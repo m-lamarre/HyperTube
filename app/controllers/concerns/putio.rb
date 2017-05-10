@@ -56,6 +56,7 @@ class Putio
   end
 
   def self.search(search_query, query_type = 'FOLDER')
+    return { 'files' => [] } if search_query == nil
     query = default_query
     query[:params][:query] = search_query
     query[:params][:type] = query_type
