@@ -14,10 +14,13 @@ class MoviesController < HomepagesController
   def play
     get_movie_from_database
     add_movie_to_watch_list(@movie.id)
-    if Putio.search(@movie.title)['files'].empty?
+    if Putio.search(@movie.folder_name)['files'].empty?
       @movie.stored_at = Time.now
       @movie.stored = true
-      Putio.upload(@movie.url)
+      putio_response = Putio.upload(@movie.url)
+      redirect_to root_url if putio_response[:error]
+      binding.pry
+      @movie.folder_name = putio_response['transfer']['name']
       @movie.save!
     end
   end

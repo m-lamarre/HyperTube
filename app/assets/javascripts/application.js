@@ -4,5 +4,6 @@
 //= require turbolinks
 //= require_tree .
 //= require vendor/video
+//= require get_video
 
 $(function(){ $(document).foundation(); });

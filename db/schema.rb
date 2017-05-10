@@ -10,22 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509135847) do
+ActiveRecord::Schema.define(version: 20170510125000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "movies", force: :cascade do |t|
-    t.string   "title",      default: "",    null: false
-    t.string   "source",     default: "",    null: false
-    t.string   "movie_id",   default: "",    null: false
-    t.string   "quality",    default: "",    null: false
-    t.string   "size",       default: "0"
-    t.boolean  "stored",     default: false
-    t.text     "url",        default: ""
+    t.string   "title",       default: "",    null: false
+    t.string   "source",      default: "",    null: false
+    t.string   "movie_id",    default: "",    null: false
+    t.string   "quality",     default: "",    null: false
+    t.string   "size",        default: "0"
+    t.boolean  "stored",      default: false
+    t.text     "url",         default: ""
     t.datetime "stored_at"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "folder_name"
     t.index ["movie_id"], name: "index_movies_on_movie_id", using: :btree
     t.index ["quality"], name: "index_movies_on_quality", using: :btree
     t.index ["source"], name: "index_movies_on_source", using: :btree
