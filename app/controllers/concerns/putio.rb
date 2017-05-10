@@ -38,9 +38,10 @@ module Putio
   def self.cleanup
     list = self.list['files'].sort_by { |f| -f['created_at'] }
     total_size = 0
+    max_size = ((ENV['PUTIO_MAX_STORAGE'] && ENV['PUTIO_MAX_STORAGE'].to_i) || 10.gigabytes)
 
     list.each { |f| total_size += f['size'] }
-    while total_size > (ENV['PUTIO_MAX_STORAGE'] || 10.gigabytes) do
+    while total_size > max_size do
       total_size -= list.first['size']
       self.delete(list.shift['id'])
     end
