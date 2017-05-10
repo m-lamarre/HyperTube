@@ -2,7 +2,7 @@
 
 .row.text-center
   h2
-    | Movie Title
+    = @movie.title
 .gap
 
 .row
@@ -21,4 +21,13 @@
   .card-divider
     .row#comments_section
       | Comments Section
-      textarea
+      = simple_form_for @comment, url: "/movie/play/#{@movie.source}/#{@movie.id}/#{@movie.quality}/comment", method: :post do |f|
+        = f.input :comment, label: 'Add Comment', required: false
+        = f.button :submit
+      - @movie.comments.each do |comment|
+        .card-divider
+          .row
+            - user = "#{comment.user.first_name} #{comment.user.last_name}"
+            = user == ' ' ? 'Anonymous' : user
+            .row
+            = comment.comment
