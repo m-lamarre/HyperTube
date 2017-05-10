@@ -78,13 +78,8 @@ module Putio
   end
 
   def self.search(search_query, query_type = 'FOLDER')
-    return { 'files' => [] } if search_query == nil
     query = default_query
     query[:params][:query] = search_query
-    query[:params][:type] = query_type
-    puts query[:params][:parent_id]
-    puts query[:params][:query]
-    puts RestClient.get('https://api.put.io/v2/files/search/' , query)
     JSON.parse RestClient.get('https://api.put.io/v2/files/search/' , query) rescue { error: 'failed to search for the item' }
   end
 

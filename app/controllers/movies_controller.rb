@@ -15,8 +15,8 @@ class MoviesController < HomepagesController
     get_movie_from_database
     @comment = Comment.new
     add_movie_to_watch_list(@movie.id)
-    puts @movie.folder_name
     if Putio.search(@movie.folder_name)['files'].empty?
+      puts 'creating movies'
       @movie.stored_at = Time.now
       @movie.stored = true
       putio_response = Putio.upload(@movie.url)

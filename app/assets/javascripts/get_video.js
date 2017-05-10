@@ -1,5 +1,5 @@
 $(window).on('load', function() {
-  if ($('#my_player').length) {
+  if ($('#movie').length) {
     url = window.location.href
     download_url = url.replace('/movie/play', '/api/v1') + '/download_url';
     console.log(download_url);
@@ -8,12 +8,12 @@ $(window).on('load', function() {
       type: 'GET',
       success:  function(data) {
         console.log(data);
-        videojs('my_player').src({ type: 'video/mp4', src: data });
+        videojs('movie').src({ type: 'video/mp4', src: data });
       },
       error: function(data) {
         alert('it flopped')
         console.log(data);
-        videojs('my_player').src({ type: 'video/mp4', src: data.responseText });
+        videojs('movie').src({ type: 'video/mp4', src: data.responseText });
       }
     });
   }
