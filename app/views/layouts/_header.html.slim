@@ -2,16 +2,18 @@ header.header
   h1.headline
     | HyperTube
   ul.header-subnav
-    li
-      = link_to 'Home', root_path
     - if user_signed_in?
       li
-        = link_to 'Browse Movies', '#'
+        = link_to 'Browse Movies', root_path
       li
-        = link_to 'Edit User Info', edit_user_registration_path
+        = link_to 'Search', '#'
+      li
+        = link_to 'User Profile', '/pages/show'
       li
         = link_to 'Logout', destroy_user_session_path, method: :delete
     - else
+      li
+        = link_to 'Home', root_path
       li
         = link_to 'About', '/pages/about'
       li

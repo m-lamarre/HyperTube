@@ -22,6 +22,7 @@ gem 'will_paginate', '~> 3.1.0'
 
 # APIs
 gem 'httparty'
+gem 'rest-client'
 
 # Assests: Stylesheets
 gem 'autoprefixer-rails'
@@ -36,6 +37,7 @@ gem 'uglifier'
 
 # File management
 gem 'carrierwave'
+gem 'carrierwave-dropbox'
 gem 'file_validators'
 gem 'mini_magick'
 

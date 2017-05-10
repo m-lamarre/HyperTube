@@ -1,19 +1,28 @@
-- provide(:title, 'Home')
+- provide(:title, 'Browse Movies')
 
 h1
-  | Movies
-
-.row
-  .small-7.small-centered
+  | Browse Movies
+.gap2
+.row.text-center
+  .small-11.small-centered
     = will_paginate @yts_count
 
 .row
   ul.index-grid
     - @movies.each do |movie|
-      li
-        = link_to src = movie_path(id: movie[:id], source: movie[:source])
+      - watched = movie[:watched] ? 'watched' : '' 
+      li class="#{watched}"
+        = link_to src = "/movie/#{movie[:source]}/#{movie[:id]}"
           img.thumbnail.homepage src="#{movie[:image_url]}"
-        p = movie[:title]
-.row
-  .small-7.small-centered
+          p#movie_title
+            = movie[:title]
+        small#year_rating
+          = ' ('
+          = movie[:year]
+          = ') IMDB Rating: '
+          = movie[:rating]
+
+.gap
+.row.text-center
+  .small-11.small-centered
     = will_paginate @yts_count

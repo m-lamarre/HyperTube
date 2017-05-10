@@ -1,11 +1,10 @@
-- provide(:title, "Log In")
+- provide(:title, 'Log In')
 
 .row
   .medium-6.medium-centered.large-4.large-centered.columns
     .row.column.log-in-form
       h2.text-center
         | Log In
-      .gap
       = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .form-inputs
           = f.input :login, required: false, autofocus: true
@@ -20,7 +19,7 @@
         .text-center
           - if devise_mapping.omniauthable?
             - resource_class.omniauth_providers.each do |provider|
-              = link_to "Log In with #{oauth_link_name provider}", omniauth_authorize_path(resource_name, provider), class: 'button'
+              = link_to "Log In with #{oauth_link_name provider}", omniauth_authorize_path(resource_name, provider), class: 'button oauth'
         .gap
         .text-center
           = link_to "Don't have an account yet? Sign Up here.", new_registration_path(resource_name), class: 'links'

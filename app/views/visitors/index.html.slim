@@ -3,16 +3,17 @@
 h1
   | Stream and Download Movies
 
-row.gap3
+row
   ul.index-grid
     - @random_movies.each do |movie|
       li
-        img.thumbnail.homepage src="#{movie[:image_url]}"
+        = link_to src = movie_path(id: movie[:id], source: movie[:source])
+          img.thumbnail.homepage src="#{movie[:image_url]}"
         p = movie[:title]
 
 row
-  h3.index-grid
-    | To use this site 
+  h4.text-center#home_links
+    | To use this site, 
     = link_to 'Sign Up', new_user_registration_path
     = ' or '
     = link_to 'Sign In', new_user_session_path

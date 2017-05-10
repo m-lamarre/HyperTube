@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502121359) do
+ActiveRecord::Schema.define(version: 20170509135847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "movies", force: :cascade do |t|
+    t.string   "title",      default: "",    null: false
+    t.string   "source",     default: "",    null: false
+    t.string   "movie_id",   default: "",    null: false
+    t.string   "quality",    default: "",    null: false
+    t.string   "size",       default: "0"
+    t.boolean  "stored",     default: false
+    t.text     "url",        default: ""
+    t.datetime "stored_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["movie_id"], name: "index_movies_on_movie_id", using: :btree
+    t.index ["quality"], name: "index_movies_on_quality", using: :btree
+    t.index ["source"], name: "index_movies_on_source", using: :btree
+    t.index ["title"], name: "index_movies_on_title", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -48,4 +65,15 @@ ActiveRecord::Schema.define(version: 20170502121359) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  create_table "watched_movies", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_watched_movies_on_movie_id", using: :btree
+    t.index ["user_id"], name: "index_watched_movies_on_user_id", using: :btree
+  end
+
+  add_foreign_key "watched_movies", "movies"
+  add_foreign_key "watched_movies", "users"
 end

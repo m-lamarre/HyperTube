@@ -1,0 +1,43 @@
+- provide(:title, 'User Profile')
+
+.row.align-center.align-middle.medium-unstack
+  .column
+    .card.small-12.small-centered.medium-12.large-9.xlarge-9.xxlarge-8.large-centered
+      .card-divider
+        .row.text-center
+          h2 
+            | User Profile
+          .gap
+          img[src="http://placehold.it/200x200"]
+      .card-section
+        .row
+          .columns.medium-4.large-4
+            strong
+              | Username: 
+            p.user_details
+              | USERNAME
+          .columns.medium-4.large-4
+            strong
+              | First Name: 
+            p.user_details
+              | USER FIRST NAME
+          .columns.medium-4.large-4
+            strong
+              | Last Name: 
+            p.user_details
+              | USER LAST NAME
+        hr
+      .card-section
+        .row
+          .columns.medium-4.large-4
+            strong
+              | Email: 
+            p.user_details
+              | user@email.com
+          .columns.medium-4.large-4
+            strong
+              | Joined: 
+            p.user_details
+              | USER CREATED_AT
+          .columns.medium-4.large-4
+            = link_to 'EDIT PROFILE', edit_user_registration_path(@user), class: 'button'
