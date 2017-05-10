@@ -14,6 +14,12 @@ class MoviesController < HomepagesController
   def play
     get_movie_from_database
     add_movie_to_watch_list(@movie.id)
+    if Putio.search(@movie.title)['files'].empty?
+      @movie.stored_at = Time.now
+      @movie.stored = true
+      Putio.upload(@movie.url)
+      @movie.save!
+    end
   end
 
 private
@@ -56,7 +62,7 @@ private
   def watched_movies
     watched = current_user.movies
     @movies.map! do |m|
-    	raise !(watched.select { |movie|  m[:id] == movie.movie_id && movie.source == m[:source] }.blank?)
+    	m[:watched] = !(watched.select { |movie|  m[:id].to_s == movie.movie_id.to_s && movie.source == m[:source] }.blank?)
     	m
     end
   end
