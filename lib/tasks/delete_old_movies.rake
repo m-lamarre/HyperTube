@@ -4,7 +4,12 @@ namespace :cleanup do
   task :delete_old_movies do
     include Putio
 
-    Putio.delete_old
-    puts 'Deleted old movies.'
+    puts Putio.delete_old
+  end
+
+  task :cleanup_putio do
+    include Putio
+
+    puts Putio.cleanup
   end
 end
