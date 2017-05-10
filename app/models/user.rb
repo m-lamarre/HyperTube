@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :watched_movies, dependent: :destroy
+
+  has_many :comments, dependent: :destroy
   has_many :movies, through: :watched_movies
+  has_many :watched_movies, dependent: :destroy
 
   validates :username,
             uniqueness: true,
