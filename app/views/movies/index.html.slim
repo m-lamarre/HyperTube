@@ -10,7 +10,9 @@ h1
 .row
   ul.index-grid
     - @movies.each do |movie|
-      li
+      - watched = movie[:watched] ? 'watched' : '' 
+      - puts movie[:watched]
+      li class="#{watched}"
         = link_to src = "/movie/#{movie[:source]}/#{movie[:id]}"
           img.thumbnail.homepage src="#{movie[:image_url]}"
           p#movie_title

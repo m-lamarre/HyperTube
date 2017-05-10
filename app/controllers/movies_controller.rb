@@ -4,6 +4,7 @@ class MoviesController < HomepagesController
   def index
     @movies ||= movies_from_yts 20, params[:page]
     @yts_count ||= FakeMovieModel.new((@total_yts_movie_count / 20 || 1), (params[:page] || 1))
+    watched_movies
   end
 
   def show
@@ -12,9 +13,15 @@ class MoviesController < HomepagesController
 
   def play
     get_movie_from_database
+    add_movie_to_watch_list(@movie.id)
   end
 
 private
+
+  def add_movie_to_watch_list(id)
+    current_user.movie_ids += [id]
+    current_user.save
+  end
 
   def get_movie_by_source
     @movie ||= get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
@@ -46,4 +53,11 @@ private
     @movie ||= find_and_save_movie
   end
 
+  def watched_movies
+    watched = current_user.movies
+    @movies.map! do |m|
+    	raise !(watched.select { |movie|  m[:id] == movie.movie_id && movie.source == m[:source] }.blank?)
+    	m
+    end
+  end
 end
