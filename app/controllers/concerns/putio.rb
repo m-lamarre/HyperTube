@@ -43,9 +43,9 @@ class Putio
       if [301, 302, 307].include? response.code
         response.headers[:location]
       else
-        { error: 'file not found. Can\'t download folders' }
+        { error: 'file not found' }
       end
-    end
+    end rescue { error: 'file not found.' }
   end
 
   def self.find_id_of_movie_in_folder(id)
