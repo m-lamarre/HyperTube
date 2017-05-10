@@ -20,14 +20,15 @@
 .card.small-11.small-centered.medium-10.medium-centered.large-7.large-centered.xlarge-6.xxlarge-5
   .card-divider
     .row#comments_section
-      | Comments Section
       = simple_form_for @comment, url: "/movie/play/#{@movie.source}/#{@movie.id}/#{@movie.quality}/comment", method: :post do |f|
-        = f.input :comment, label: 'Add Comment', required: false
-        = f.button :submit
-      - @movie.comments.each do |comment|
-        .card-divider
-          .row
-            - user = "#{comment.user.first_name} #{comment.user.last_name}"
-            = user == ' ' ? 'Anonymous' : user
-            .row
-            = comment.comment
+        = f.input :comment, label: false, required: false, placeholder: 'Leave a Comment'
+        .gap
+        .text-center
+          = f.button :submit, 'ADD COMMENT', class: 'button'
+  - @movie.comments.each do |comment|
+    .card-section
+      .row
+        - user = "#{comment.user.first_name} #{comment.user.last_name}"
+        = user == ' ' ? 'Anonymous' : user
+        .row
+        = comment.comment
