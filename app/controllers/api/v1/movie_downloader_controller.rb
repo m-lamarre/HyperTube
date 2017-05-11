@@ -5,7 +5,7 @@ class Api::V1::MovieDownloaderController < MoviesController
   def get_download_url
     movie = get_movie_from_database
     link = Putio.find_and_download(movie.folder_name)
-    set_downloading_status_to_false(movie) unless movie_not_found(link)
+    set_downloading_status_to_false(movie) if movie_not_found(link)
     respond_with link
   end
 
@@ -17,6 +17,6 @@ private
 
   def set_downloading_status_to_false(movie)
     movie.downloading = false
-    movie.save
+    movie.save!
   end
 end
