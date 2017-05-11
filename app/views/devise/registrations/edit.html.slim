@@ -8,14 +8,13 @@
         = resource_name.to_s.humanize
         |  Profile
       .gap
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = simple_form_for(@user, url: '/users/profile', html: { method: :post }) do |f|
         = f.error_notification
         .form-inputs
-          = image_tag @user.profile_picture.url,
+          = image_tag @user.profile_picture.avatar.url,
                       alt: "#{@user.first_name} #{@user.last_name}",
                       class: 'profile-img',
                       height: '200',
-                      id: 'output',
                       width: '200'
           = f.file_field :profile_picture,
                           accept: 'image/jpg,image/jpeg,image/png',
@@ -24,22 +23,22 @@
           = f.input :username, required: true, autofocus: true
           = f.input :first_name, required: true
           = f.input :last_name, required: true
-          = f.input :email, required: true
-          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-            p
-              | Currently waiting confirmation for:
-              = resource.unconfirmed_email
-          = f.label 'Password', class: 'inline-links'
-          .inline-links
-            |  
-          = f.label "(leave it blank if you don't want to change it)", class: 'inline-links small-hint'
-          = f.input :password, autocomplete: 'off', required: false, label: false
-          = f.input :password_confirmation, required: false
-          = f.label 'Current Password', class: 'inline-links'
-          .inline-links
-            |  
-          = f.label '(enter current password to confirm changes)', class: 'inline-links small-hint'
-          = f.input :current_password, required: true, label: false
+          / = f.input :email, required: true
+          / - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          /   p
+          /     | Currently waiting confirmation for:
+          /     = resource.unconfirmed_email
+          / = f.label 'Password', class: 'inline-links'
+          / .inline-links
+          /   |  
+          / = f.label "(leave it blank if you don't want to change it)", class: 'inline-links small-hint'
+          / = f.input :password, autocomplete: 'off', required: false, label: false
+          / = f.input :password_confirmation, required: false
+          / = f.label 'Current Password', class: 'inline-links'
+          / .inline-links
+          /   |  
+          / = f.label '(enter current password to confirm changes)', class: 'inline-links small-hint'
+          / = f.input :current_password, required: true, label: false
         .gap
         .form-actions.text-center
           = f.button :submit, 'UPDATE', class: 'button'
