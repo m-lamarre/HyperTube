@@ -17,7 +17,7 @@ footer.footer
           li
             = link_to 'Search', '#'
           li
-            = link_to 'User Profile', '/pages/show'
+            = link_to 'User Profile', "/users/#{current_user.id}"
           li
             = link_to 'Logout', destroy_user_session_path, method: :delete
         - else

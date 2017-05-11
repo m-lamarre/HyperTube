@@ -2,7 +2,7 @@ class ApplicationUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 
-  storage :dropbox
+  # storage :dropbox
 
   def store_dir
     [
@@ -17,9 +17,9 @@ class ApplicationUploader < CarrierWave::Uploader::Base
   def default_url
     image_path = [
       mounted_as.to_s.dasherize,
-      "#{version_name.to_s.dasherize}.svg",
+      "#{version_name.to_s.dasherize}.jpg",
     ].compact.join('-')
-    ActionController::Base.helpers.asset_path(['assets', 'fallbacks', image_path].join('/'))
+    ActionController::Base.helpers.asset_path(['assets', 'images', 'fallbacks', image_path].join('/'))
   end
 
 end

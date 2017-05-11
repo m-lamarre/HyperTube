@@ -6,26 +6,31 @@
       .card-divider
         .row.text-center
           h2 
-            | User Profile
+            | User Profile 
           .gap
-          img[src="http://placehold.it/200x200"]
+          = image_tag @user.profile_picture.avatar.url,
+                      alt: "#{@user.first_name} #{@user.last_name}",
+                      class: 'profile-img',
+                      height: '200',
+                      width: '200'
+          .gap
       .card-section
         .row
           .columns.medium-4.large-4
             strong
               | Username: 
             p.user_details
-              | USERNAME
+              = @user.username
           .columns.medium-4.large-4
             strong
               | First Name: 
             p.user_details
-              | USER FIRST NAME
+              = @user.first_name
           .columns.medium-4.large-4
             strong
               | Last Name: 
             p.user_details
-              | USER LAST NAME
+              = @user.last_name
         hr
       .card-section
         .row
@@ -33,11 +38,11 @@
             strong
               | Email: 
             p.user_details
-              | user@email.com
+              = @user.email
           .columns.medium-4.large-4
             strong
               | Joined: 
             p.user_details
-              | USER CREATED_AT
+              = @user.created_at.strftime('%d %B %Y')
           .columns.medium-4.large-4
             = link_to 'EDIT PROFILE', edit_user_registration_path(@user), class: 'button'
