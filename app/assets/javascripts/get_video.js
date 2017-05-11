@@ -3,7 +3,6 @@ $(window).on('load', function() {
     $('.movie-container').css('display', 'none')
     url = window.location.href
     download_url = url.replace('/movie/play', '/api/v1') + '/download_url';
-    console.log(download_url);
     get_movie_url();
   }
 });

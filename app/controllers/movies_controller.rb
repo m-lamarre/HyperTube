@@ -15,9 +15,10 @@ class MoviesController < HomepagesController
     get_movie_from_database
     @comment = Comment.new
     add_movie_to_watch_list(@movie.id)
-    if @movie.folder_name.blank? || Putio.search(@movie.folder_name)['files'].empty?
+    if (@movie.folder_name.blank? || Putio.search(@movie.folder_name)['files'].empty?) && !@movie.downloading
       @movie.stored_at = Time.now
       @movie.stored = true
+      @movie.downloading = true
       putio_response = Putio.upload(@movie.url)
       redirect_to root_url if putio_response[:error]
       @movie.folder_name = putio_response['transfer']['name'].gsub('[YTS.AG]', '[YTS AG]')
@@ -50,6 +51,7 @@ class MoviesController < HomepagesController
       source: movie_from_source[:source],
       movie_id: movie_from_source[:id],
       quality: params[:quality],
+      thumbnail: movie_from_source[:image_url],
       size: torrent[:size],
       url: torrent[:url],
       stored: false,
