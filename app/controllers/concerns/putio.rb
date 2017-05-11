@@ -92,6 +92,7 @@ module Putio
   def self.find_and_download(name)
     id = self.list_search(name).first['id']
     id = self.list(id)['files'].select { |result| result['file_type'] == 'VIDEO' }.sort_by { |file| -file['size'] }.first['id'] rescue { error: 'failed to find video' }
+    self.share(id)
     self.download(id)
   end
 
