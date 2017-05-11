@@ -13,16 +13,20 @@ class MoviesController < HomepagesController
 
   def play
     get_movie_from_database
+    @comment = Comment.new
     add_movie_to_watch_list(@movie.id)
-    if Putio.search(@movie.title)['files'].empty?
+    if (@movie.folder_name.blank? || Putio.list_search(@movie.folder_name).empty?) && !@movie.downloading
       @movie.stored_at = Time.now
       @movie.stored = true
-      Putio.upload(@movie.url)
+      @movie.downloading = true
+      putio_response = Putio.upload(@movie.url)
+      redirect_to root_url if putio_response[:error]
+      @movie.folder_name = putio_response['transfer']['name'].gsub('[YTS.AG]', '')
       @movie.save!
     end
   end
 
-private
+  private
 
   def add_movie_to_watch_list(id)
     current_user.movie_ids += [id]
@@ -47,6 +51,7 @@ private
       source: movie_from_source[:source],
       movie_id: movie_from_source[:id],
       quality: params[:quality],
+      thumbnail: movie_from_source[:image_url],
       size: torrent[:size],
       url: torrent[:url],
       stored: false,
@@ -62,8 +67,8 @@ private
   def watched_movies
     watched = current_user.movies
     @movies.map! do |m|
-    	m[:watched] = !(watched.select { |movie|  m[:id].to_s == movie.movie_id.to_s && movie.source == m[:source] }.blank?)
-    	m
+      m[:watched] = !(watched.select { |movie|  m[:id].to_s == movie.movie_id.to_s && movie.source == m[:source] }.blank?)
+      m
     end
   end
 end

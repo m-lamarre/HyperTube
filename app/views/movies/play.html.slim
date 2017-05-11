@@ -2,23 +2,40 @@
 
 .row.text-center
   h2
-    | Movie Title
+    = @movie.title
 .gap
 
-.row
-  .small-6.small-centered
-    video.video-js.vjs-big-play-centered.vjs-4-3[controls preload='auto' data-setup='{}' poster='https://unsplash.it/560/320?image=668']
-      source src='http://techslides.com/demos/sample-videos/small.mp4' type='video/mp4'
-      p.vjs-no-js
-        |  To view this video please enable JavaScript, and consider upgrading to a web browser that 
-        a href='http://videojs.com/html5-video-support/' target='_blank'
-          |  supports HTML5 video
+.loading-container
+  .row
+    .small-4.medium-2.large-1.small-centered
+      #loader
+  p.text-center loading movie...
 
-.gap3
+.movie-container.animate-bottom
+  .row
+    .small-6.small-centered
+      video#movie.video-js.vjs-big-play-centered.vjs-4-3[controls preload='auto' data-setup='{}' poster="#{@movie.thumbnail}"]
+        source src='http://techslides.com/demos/sample-videos/small.mp4' type='video/mp4'
+        p.vjs-no-js
+          |  To view this video please enable JavaScript, and consider upgrading to a web browser that 
+          a href='http://videojs.com/html5-video-support/' target='_blank'
+            |  supports HTML5 video
 
-.row.flex-container
-.card.small-11.small-centered.medium-10.medium-centered.large-7.large-centered.xlarge-6.xxlarge-5
-  .card-divider
-    .row#comments_section
-      | Comments Section
-      textarea
+  .gap3
+  /
+  .row.flex-container
+  .card.small-11.small-centered.medium-10.medium-centered.large-7.large-centered.xlarge-6.xxlarge-5
+    .card-divider
+      .row#comments_section
+        = simple_form_for @comment, url: "/movie/play/#{@movie.source}/#{@movie.id}/#{@movie.quality}/comment", method: :post do |f|
+          = f.input :comment, label: false, required: false, placeholder: 'Leave a Comment'
+          .gap
+          .text-center
+            = f.button :submit, 'ADD COMMENT', class: 'button'
+    - @movie.comments.each do |comment|
+      .card-section
+        .row
+          - user = "#{comment.user.first_name} #{comment.user.last_name}"
+          = user == ' ' ? 'Anonymous' : user
+          .row
+          = comment.comment
