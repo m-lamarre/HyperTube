@@ -31,7 +31,7 @@
         .gap
         .movie_buttons
           - @movie[:torrents].each do |torrent|
-            a href="/movie/play/#{@movie[:source]}/#{@movie[:id]}/#{torrent[:quality]}"
+            a href="/movie/play/#{@movie[:source]}/#{@movie[:id]}/#{torrent[:quality]}" data-turbolinks="false"
               button.button.movie_quality
                 = torrent[:quality]
   .card-section
