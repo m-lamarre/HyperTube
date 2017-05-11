@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510125007) do
+ActiveRecord::Schema.define(version: 20170511062851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170510125007) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "folder_name"
+    t.boolean  "downloading", default: false
+    t.index ["downloading"], name: "index_movies_on_downloading", using: :btree
     t.index ["movie_id"], name: "index_movies_on_movie_id", using: :btree
     t.index ["quality"], name: "index_movies_on_quality", using: :btree
     t.index ["source"], name: "index_movies_on_source", using: :btree
