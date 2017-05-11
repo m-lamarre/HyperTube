@@ -4,6 +4,19 @@ class Api::V1::MovieDownloaderController < MoviesController
 
   def get_download_url
     movie = get_movie_from_database
-    respond_with Putio.find_and_download(movie.title)
+    link = Putio.find_and_download(movie.folder_name)
+    set_downloading_status_to_false(movie) unless movie_not_found(link)
+    respond_with link
+  end
+
+private
+
+  def movie_not_found(link)
+    ((link == { error: 'failed to find video' }) || (link == 'error')) ? false : true
+  end
+
+  def set_downloading_status_to_false(movie)
+    movie.downloading = false
+    movie.save
   end
 end
