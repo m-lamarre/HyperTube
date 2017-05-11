@@ -82,11 +82,16 @@ module Putio
     query[:params][:query] = search_query
     query[:params][:type] = query_type
 
-    JSON.parse RestClient.get('https://api.put.io/v2/files/search/' , query) rescue { error: 'failed to search for the item' }
+    JSON.parse RestClient.get('https://api.put.io/v2/files/search/' , query) rescue self.list_search(search_query)
+  end
+
+  def self.list_search(search_query)
+    Putio.list['files'].select { |f| f['name'].include? search_query } rescue []
   end
 
   def self.find_and_download(name)
-    id = self.search(name)['files'].select { |result| result['file_type'] == 'VIDEO' }.sort_by { |file| -file['size'] }.first['id'] rescue { error: 'failed to find video' }
+    id = self.list_search(name).first['id']
+    id = self.list(id)['files'].select { |result| result['file_type'] == 'VIDEO' }.sort_by { |file| -file['size'] }.first['id'] rescue { error: 'failed to find video' }
     self.download(id)
   end
 
