@@ -51,6 +51,7 @@ class MoviesController < HomepagesController
       source: movie_from_source[:source],
       movie_id: movie_from_source[:id],
       quality: params[:quality],
+      thumbnail: movie_from_source[:image_url],
       size: torrent[:size],
       url: torrent[:url],
       stored: false,
