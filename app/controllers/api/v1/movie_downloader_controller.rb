@@ -6,7 +6,7 @@ class Api::V1::MovieDownloaderController < MoviesController
     movie = get_movie_from_database
     link = Putio.find_and_download(movie.folder_name)
     set_downloading_status_to_false(movie) if movie_not_found(link)
-    respond_with link
+    respond_with link.gsub('&attachment=1', '')
   end
 
 private
