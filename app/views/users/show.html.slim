@@ -32,17 +32,18 @@
             p.user_details
               = @user.last_name
         hr
-      .card-section
-        .row
-          .columns.medium-4.large-4
-            strong
-              | Email: 
-            p.user_details
-              = @user.email
-          .columns.medium-4.large-4
-            strong
-              | Joined: 
-            p.user_details
-              = @user.created_at.strftime('%d %B %Y')
-          .columns.medium-4.large-4
-            = link_to 'EDIT PROFILE', edit_user_registration_path(@user), class: 'button'
+      - if @user.id == current_user.id
+        .card-section
+          .row
+            .columns.medium-4.large-4
+              strong
+                | Email: 
+              p.user_details
+                = @user.email
+            .columns.medium-4.large-4
+              strong
+                | Joined: 
+              p.user_details
+                = @user.created_at.strftime('%d %B %Y')
+            .columns.medium-4.large-4
+              = link_to 'EDIT PROFILE', edit_user_registration_path(@user), class: 'button'
