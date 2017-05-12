@@ -93,7 +93,8 @@ module Putio
     id = self.list_search(name).first['id']
     id = self.list(id)['files'].select { |result| result['file_type'] == 'VIDEO' }.sort_by { |file| -file['size'] }.first['id'] rescue { error: 'failed to find video' }
     self.share(id)
-    self.download(id)
+    url = self.download(id)
+    "https://api.put.io/v2/files/#{id}/stream?oauth_token=#{ENV['PUTIO_TOKEN']}"
   end
 
   def self.folder_size
