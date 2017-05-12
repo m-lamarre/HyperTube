@@ -2,6 +2,13 @@
 
 h1
   | Browse Movies
+
+.gap2
+.row
+  | Genre
+  - @genres.each do |genre|
+    = button_to genre, root_path(genre: :drama),  method: 'get', params: { genre: genre }
+
 .gap2
 .row.text-center
   .small-11.small-centered
