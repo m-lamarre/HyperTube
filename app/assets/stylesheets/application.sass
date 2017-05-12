@@ -114,8 +114,6 @@ span.error
   box-shadow: $shadow $btn-shadow
   font-family: $body-font-family
   transition: background-color 0.25s ease-out, color 0.25s ease-out
-  +breakpoint(small only)
-    max-width: 50%
   &:hover, &:active, &:focus
     background: $teal-800
     color: $white
@@ -266,3 +264,14 @@ abbr[title]
 
 .profile-img
   border-radius: $standard-radius
+
+input#user_profile_picture
+  background-color: $white
+  border: 1px solid #cacaca
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1)
+  font-family: $body-font-family
+  height: 2.4375rem
+
+input[type='file']
+  padding-top: rem-calc(7)
+  padding-left: rem-calc(7)

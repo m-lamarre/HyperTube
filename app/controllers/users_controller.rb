@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:success] = 'Profile Updated'
+      flash[:notice] = 'Profile Updated'
       render 'show'
     else
-      flash[:error] = 'Please see errors below.'
-      render 'edit'
+      flash[:alert]
+      render 'devise/registrations/edit'
     end
   end
 
