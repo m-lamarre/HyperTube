@@ -24,32 +24,32 @@
           = f.input :first_name, required: true
           = f.input :last_name, required: true
           = f.input :email, required: true
-          = f.label 'Want to change your password?', class: 'inline-links'
-          .inline-links
-            |  
-          = f.label "(leave it blank if you don't)", class: 'inline-links small-hint'
-          = f.input :password, autocomplete: 'off', required: false, label: false, placeholder: 'New Password'
-          = f.input :password_confirmation, required: false, placeholder: 'Confirm New Password'
-          = f.label 'Current Password', class: 'inline-links'
-          .inline-links
-            |  
-          = f.label '(enter current password to confirm changes)', class: 'inline-links small-hint'
-          = f.input :current_password, required: true, label: false, placeholder: 'Current Password'
+          / = f.label 'Want to change your password?', class: 'inline-links'
+          / .inline-links
+          /   |  
+          / = f.label "(leave it blank if you don't)", class: 'inline-links small-hint'
+          / = f.input :password, autocomplete: 'off', required: false, label: false, placeholder: 'New Password'
+          / = f.input :password_confirmation, required: false, placeholder: 'Confirm New Password'
+          / = f.label 'Current Password', class: 'inline-links'
+          / .inline-links
+          /   |  
+          / = f.label '(enter current password to confirm changes)', class: 'inline-links small-hint'
+          / = f.input :current_password, required: true, label: false, placeholder: 'Current Password'
         .gap
         .form-actions.text-center
           = f.button :submit, 'UPDATE', class: 'button'
       hr
-      / h3.text-center
-      /   | Cancel My Account
-      / .gap
-      / p.text-center#leave-us
-      /   | Want to leave us? 😢
-      / .gap
-      / .text-center
-      /   = link_to 'CANCEL ACCOUNT', registration_path(resource_name),
-      /             data: { confirm: 'Are you sure?' },
-      /             method: :delete,
-      /             class: 'button'
-      / .gap
+      h3.text-center
+        | Cancel My Account
+      .gap
+      p.text-center#leave-us
+        | Want to leave us? 😢
+      .gap
+      .text-center
+        = link_to 'CANCEL ACCOUNT', registration_path(resource_name),
+                  data: { confirm: 'Are you sure?' },
+                  method: :delete,
+                  class: 'button'
+      .gap
       .text-center
         = link_to 'Back', "/users/#{current_user.id}", class: 'links'
