@@ -2,16 +2,19 @@
 
 h1
   | Search Movies
-
 .gap2
 
-h2
-  | Simple Search
-
-= form_tag("/movie/search", method: "get")
-  = label_tag(:search_query, "Search for:")
-  = text_field_tag(:search_query, params[:search_query], placeholder: 'Enter Search Query...')
-  = submit_tag("Search")
+.row.align-center.align-middle
+  .column
+    .small-11.small-centered.medium-8.large-7.xlarge-7.xxlarge-7.large-centered
+      .row
+        h3
+          | Simple Search
+      .row
+        = form_tag("/movie/search", method: "get")
+          = text_field_tag(:search_query, params[:search_query], placeholder: 'Enter Search Query...')
+        .text-center
+          = submit_tag("SEARCH", class: 'button')
 
 
 / h2
@@ -26,9 +29,8 @@ h2
 
 /     = f.button :submit, 'Search For Movie'
 
-.gap3
-
-h2
+.gap2
+h2.text-center
   | Results From YTS
 .row
   ul.index-grid
