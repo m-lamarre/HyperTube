@@ -2,8 +2,9 @@ class MoviesController < HomepagesController
   before_action :authenticate_user!
 
   def index
-    @movies ||= movies_from_yts 20, params[:page]
+    @movies ||= params[:genre] ? get_yts_movies_by_genre(params[:genre], 20, params[:page]) : movies_from_yts(20, params[:page])
     @yts_count ||= FakeMovieModel.new((@total_yts_movie_count / 20 || 1), (params[:page] || 1))
+    @genres = %i(Action Adventure Animation Biography Comedy Crime Documentary Drama Family Fantasy Film-Noir History Horror Music Musical Mystery Romance Sci-Fi Sport Thriller War Western)
     watched_movies
   end
 
