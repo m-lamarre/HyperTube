@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'movie/:source/:id', to: 'movies#show'
 
+  get 'movie/search', to: 'movies#search'
+
   get 'movie/play/:source/:id/:quality', to: 'movies#play'
 
   post 'movie/play/:source/:id/:quality/comment', to: 'comments#create'

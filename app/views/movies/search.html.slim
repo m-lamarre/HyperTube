@@ -1,0 +1,46 @@
+- provide(:title, 'Search Movies')
+
+h1
+  | Search Movies
+
+.gap2
+
+h2
+  | Simple Search
+
+= form_tag("/movie/search", method: "get")
+  = label_tag(:search_query, "Search for:")
+  = text_field_tag(:search_query, params[:search_query], placeholder: 'Enter Search Query...')
+  = submit_tag("Search")
+
+
+/ h2
+/   | Advanced Search
+/ = simple_form_for(@movie, url: 'search', html: { method: :get }) do |f|
+/   = f.error_notification
+/   .form-inputs
+/     = f.input :title
+/     = f.input :source
+/     = f.input :movie_id
+/     = f.input :quality
+
+/     = f.button :submit, 'Search For Movie'
+
+.gap3
+
+h2
+  | Results From YTS
+.row
+  ul.index-grid
+    - @yts_movies.each do |movie|
+      - watched = movie[:watched] ? 'watched' : '' 
+      li class="#{watched}"
+        = link_to src = "/movie/#{movie[:source]}/#{movie[:id]}"
+          img.thumbnail.homepage src="#{movie[:image_url]}"
+          p#movie_title
+            = movie[:title]
+        small#year_rating
+          = ' ('
+          = movie[:year]
+          = ') IMDB Rating: '
+          = movie[:rating]
