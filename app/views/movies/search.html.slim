@@ -10,11 +10,11 @@ h1
       .row
         h3
           | Simple Search
-      .row
+      .row.input-group
         = form_tag("/movie/search", method: "get")
-          = text_field_tag(:search_query, params[:search_query], placeholder: 'Enter Search Query...')
-        .text-center
-          = submit_tag("SEARCH", class: 'button')
+          = text_field_tag(:search_query, params[:search_query], placeholder: 'Enter Search Query...', class: 'input-group-field')
+        .input-group-button
+          = submit_tag("SEARCH", class: 'button search_btn')
 
 
 / h2
