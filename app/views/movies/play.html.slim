@@ -9,6 +9,7 @@
   .row
     .small-4.medium-2.large-1.small-centered
       #loader
+  .gap
   p.text-center loading movie...
 
 .movie-container.animate-bottom
@@ -22,7 +23,7 @@
             |  supports HTML5 video
 
   .gap3
-  /
+
   .row.flex-container
   .card.small-11.small-centered.medium-10.medium-centered.large-7.large-centered.xlarge-6.xxlarge-5
     .card-divider
@@ -36,6 +37,10 @@
       .card-section
         .row
           - user = "#{comment.user.first_name} #{comment.user.last_name}"
-          = user == ' ' ? 'Anonymous' : user
-          .row
+          - user_id = "#{comment.user.id}"
+        strong
+          = link_to users_show_path(user_id), class: 'links'
+            = user == ' ' ? 'Anonymous' : user
+        .row
           = comment.comment
+        hr

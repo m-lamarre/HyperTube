@@ -8,11 +8,13 @@ Rails.application.routes.draw do
 
   resource :movie, only: %i(show)
 
-  get 'users/:id', to: 'users#show'
+  get 'users/:id', to: 'users#show', as: 'users_show'
 
   post '/users/profile', to: 'users#update'
 
   get 'movie/:source/:id', to: 'movies#show'
+
+  get 'movie/search', to: 'movies#search'
 
   get 'movie/play/:source/:id/:quality', to: 'movies#play'
 

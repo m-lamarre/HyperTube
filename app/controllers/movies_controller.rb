@@ -2,8 +2,9 @@ class MoviesController < HomepagesController
   before_action :authenticate_user!
 
   def index
-    @movies ||= movies_from_yts 20, params[:page]
+    @movies ||= params[:genre] ? get_yts_movies_by_genre(params[:genre], 20, params[:page]) : movies_from_yts(20, params[:page])
     @yts_count ||= FakeMovieModel.new((@total_yts_movie_count / 20 || 1), (params[:page] || 1))
+    @genres = %i(Action Adventure Animation Biography Comedy Crime Documentary Drama Family Fantasy Film-Noir History Horror Music Musical Mystery Romance Sci-Fi Sport Thriller War Western)
     watched_movies
   end
 
@@ -26,7 +27,26 @@ class MoviesController < HomepagesController
     end
   end
 
+  def search
+    @search = params[:query]
+    @movie = Movie.new
+    @yts_movies = search_movies_from_yts(params[:search_query])
+    watched_movies(@yts_movies)
+  end
+
   private
+
+  def search_database_movies
+    @movies = Movie.where(
+      "title LIKE '%#{params[:title]}%'"
+    ).where(
+      "title LIKE '%#{params[:source]}%'"
+    ).where(
+      "title LIKE '%#{params[:movie_id]}%'"
+    ).where(
+      "title LIKE '%#{params[:quality]}%'"
+    ).limit(20).offset(params[:page])
+  end
 
   def add_movie_to_watch_list(id)
     current_user.movie_ids += [id]
@@ -64,9 +84,9 @@ class MoviesController < HomepagesController
     @movie ||= find_and_save_movie
   end
 
-  def watched_movies
+  def watched_movies(current_movies = @movies)
     watched = current_user.movies
-    @movies.map! do |m|
+    current_movies.map! do |m|
       m[:watched] = !(watched.select { |movie|  m[:id].to_s == movie.movie_id.to_s && movie.source == m[:source] }.blank?)
       m
     end

@@ -2,6 +2,17 @@
 
 h1
   | Browse Movies
+
+.gap2
+.row
+  h3.text-center
+    | Sort by Genre
+.gap
+.row.small-up-3.medium-up-5.large-up-8
+  - @genres.each do |genre|
+    .column.column-block
+      = button_to genre, root_path(genre: :drama),  method: 'get', params: { genre: genre }, class: 'button genre_sort'
+
 .gap2
 .row.text-center
   .small-11.small-centered
