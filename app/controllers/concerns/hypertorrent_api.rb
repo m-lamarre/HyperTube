@@ -64,6 +64,7 @@ private
   def search_movies_from_hypertorrnet(query_term)
     api_data = HTTParty.get('http://hypertorrent.herokuapp.com/api/v1/movies')
     movies = api_data.select { |m| m['title'].downcase.include? query_term.downcase } rescue []
+    movies = api_data if movies == []
     movies == [] ? movies : serialize_hypertorrnet_movies(movies)
   end
 
