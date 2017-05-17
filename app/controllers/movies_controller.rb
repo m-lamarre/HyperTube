@@ -37,7 +37,7 @@ class MoviesController < HomepagesController
     @movie.downloading = true
     putio_response = Putio.upload(@movie.url)
     redirect_to root_url if putio_response[:error]
-    @movie.folder_name = putio_response['transfer']['name'].gsub('[YTS.AG]', '')
+    @movie.folder_name = putio_response['transfer']['name'].gsub('[YTS.AG]', '') rescue nil
     @movie.save!
   end
 
