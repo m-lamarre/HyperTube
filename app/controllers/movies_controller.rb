@@ -16,25 +16,30 @@ class MoviesController < HomepagesController
     get_movie_from_database
     @comment = Comment.new
     add_movie_to_watch_list(@movie.id)
-    if (@movie.folder_name.blank? || Putio.list_search(@movie.folder_name).empty?) && !@movie.downloading
-      @movie.stored_at = Time.now
-      @movie.stored = true
-      @movie.downloading = true
-      putio_response = Putio.upload(@movie.url)
-      redirect_to root_url if putio_response[:error]
-      @movie.folder_name = putio_response['transfer']['name'].gsub('[YTS.AG]', '')
-      @movie.save!
-    end
+    store_local_copy_of_movie
   end
 
   def search
     @search = params[:query]
     @movie = Movie.new
     @yts_movies = search_movies_from_yts(params[:search_query])
+    @hypertorrnet_movies = search_movies_from_hypertorrent(params[:search_query])
     watched_movies(@yts_movies)
+    watched_movies(@hypertorrnet_movies)
   end
 
   private
+
+  def store_local_copy_of_movie
+    return unless (@movie.folder_name.blank? || Putio.list_search(@movie.folder_name).empty?) && !@movie.downloading
+    @movie.stored_at = Time.now
+    @movie.stored = true
+    @movie.downloading = true
+    putio_response = Putio.upload(@movie.url)
+    redirect_to root_url if putio_response[:error]
+    @movie.folder_name = putio_response['transfer']['name'].gsub('[YTS.AG]', '')
+    @movie.save!
+  end
 
   def search_database_movies
     @movies = Movie.where(
@@ -55,11 +60,13 @@ class MoviesController < HomepagesController
 
   def get_movie_by_source
     @movie ||= get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
+    @movie ||= get_hypertorrnet_movie_by_id(params[:id]) if params[:source] == 'hypertorrent'
     @movie ||= select_random_movies(1).first
   end
 
   def find_and_save_movie
     movie_from_source = get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
+    movie_from_source = 
     movie = save_movie_to_database(movie_from_source)
   end
 
