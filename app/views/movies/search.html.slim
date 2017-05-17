@@ -46,3 +46,21 @@ h2.text-center
           = movie[:year]
           = ') IMDB Rating: '
           = movie[:rating]
+
+.gap3
+h2.text-center
+  | Results From Hypertorrent
+.row
+  ul.index-grid
+    - @hypertorrent_movies.each do |movie|
+      - watched = movie[:watched] ? 'watched' : '' 
+      li class="#{watched}"
+        = link_to src = "/movie/#{movie[:source]}/#{movie[:id]}"
+          img.thumbnail.homepage src="#{movie[:image_url]}"
+          p#movie_title
+            = movie[:title]
+        small#year_rating
+          = ' ('
+          = movie[:year]
+          = ') IMDB Rating: '
+          = movie[:rating]
