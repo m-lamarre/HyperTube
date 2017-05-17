@@ -1,6 +1,7 @@
 class HomepagesController < ApplicationController
   include RandomFunctions
   include YtsApi
+  include HypertorrentApi
 
   @random_movies
 
