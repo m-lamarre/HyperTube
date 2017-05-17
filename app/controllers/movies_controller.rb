@@ -66,7 +66,7 @@ class MoviesController < HomepagesController
 
   def find_and_save_movie
     movie_from_source = get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
-    movie_from_source = 
+    movie_from_source ||= get_hypertorrnet_movie_by_id(params[:id]) if params[:source] == 'hypertorrent'
     movie = save_movie_to_database(movie_from_source)
   end
 
