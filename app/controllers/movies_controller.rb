@@ -23,7 +23,7 @@ class MoviesController < HomepagesController
     @search = params[:query]
     @movie = Movie.new
     @yts_movies = search_movies_from_yts(params[:search_query])
-    @hypertorrent_movies = search_movies_from_hypertorrnet(params[:search_query])
+    @hypertorrent_movies = search_movies_from_hypertorrent(params[:search_query])
     watched_movies(@yts_movies)
     watched_movies(@hypertorrent_movies)
   end
@@ -60,13 +60,13 @@ class MoviesController < HomepagesController
 
   def get_movie_by_source
     @movie ||= get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
-    @movie ||= get_hypertorrnet_movie_by_id(params[:id]) if params[:source] == 'hypertorrent'
+    @movie ||= get_hypertorrent_movie_by_id(params[:id]) if params[:source] == 'hypertorrent'
     @movie ||= select_random_movies(1).first
   end
 
   def find_and_save_movie
     movie_from_source = get_yts_movie_by_id(params[:id]) if params[:source] == 'yts'
-    movie_from_source ||= get_hypertorrnet_movie_by_id(params[:id]) if params[:source] == 'hypertorrent'
+    movie_from_source ||= get_hypertorrent_movie_by_id(params[:id]) if params[:source] == 'hypertorrent'
     movie = save_movie_to_database(movie_from_source)
   end
 
