@@ -23,9 +23,9 @@ class MoviesController < HomepagesController
     @search = params[:query]
     @movie = Movie.new
     @yts_movies = search_movies_from_yts(params[:search_query])
-    @hypertorrnet_movies = search_movies_from_hypertorrent(params[:search_query])
+    @hypertorrent_movies = search_movies_from_hypertorrnet(params[:search_query])
     watched_movies(@yts_movies)
-    watched_movies(@hypertorrnet_movies)
+    watched_movies(@hypertorrent_movies)
   end
 
   private
