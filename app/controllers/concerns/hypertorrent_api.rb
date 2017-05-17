@@ -10,7 +10,7 @@ private
     t = Hash.new ''
     t[:url] = torrent['url']
     t[:hash] = torrent['hash']
-    t[:quality] = torrent['quality']
+    t[:quality] = torrent['quality'] || 'unknown'
     t[:size] = torrent['size_bytes']
     t[:seeds] = torrent['seeds']
     t[:peers] = torrent['peers']
