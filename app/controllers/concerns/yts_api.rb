@@ -41,7 +41,7 @@ private
     api_data['status'] == 'ok' ? serialize_yts_movie(api_data['data']['movie']) : api_data['status_message']
   end
 
-  def movies_from_yts(amount = 20, page = 1, sort_by = 'date_added', order_by = 'desc')
+  def movies_from_yts(amount = 20, page = 1, sort_by = 'download_count', order_by = 'desc')
     api_data = HTTParty.get(
       "https://yts.ag/api/v2/list_movies.json?limit=#{amount}&page=#{page}&sort_by=#{sort_by}&order_by=#{order_by}"
     )
