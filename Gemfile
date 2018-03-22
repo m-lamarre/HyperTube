@@ -42,9 +42,9 @@ gem 'file_validators'
 gem 'mini_magick'
 
 # Omniauth
-gem 'omniauth-facebook', '~> 4.0.0'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'omniauth-marvin', '~> 1.0.2'
+gem 'omniauth-microsoft_v2_auth', path: './lib/omniauth-microsoft_v2_auth'
 
 # Misc
 gem 'faker'
@@ -52,6 +52,9 @@ gem 'figaro'
 gem 'postmark-rails', '~> 0.15.0'
 gem 'pry-rails'
 gem 'puma', '~> 3.0'
+
+# To test on windows (TODO)
+# gem 'tzinfo-data'
 
 group :development do
   gem 'guard-bundler'
