@@ -1,0 +1,22 @@
+header.header
+  h1.headline
+    | HyperTube
+  ul.header-subnav
+    - if user_signed_in?
+      li
+        = link_to 'Browse Movies', root_path
+      li
+        = link_to 'Search', movie_search_path
+      li
+        = link_to 'User Profile', "/users/#{current_user.id}"
+      li
+        = link_to 'Logout', destroy_user_session_path, method: :delete
+    - else
+      li
+        = link_to 'Home', root_path
+      li
+        = link_to 'About', '/pages/about'
+      li
+        = link_to 'Sign Up', new_user_registration_path
+      li
+        = link_to 'Sign In', new_user_session_path

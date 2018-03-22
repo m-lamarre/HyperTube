@@ -1,0 +1,66 @@
+- provide(:title, 'Search Movies')
+
+h1
+  | Search Movies
+.gap2
+
+.row.align-center.align-middle
+  .column
+    .small-11.small-centered.medium-8.large-7.xlarge-7.xxlarge-7.large-centered
+      .row
+        h3
+          | Simple Search
+      .row.input-group
+        = form_tag("/movie/search", method: "get")
+          = text_field_tag(:search_query, params[:search_query], placeholder: 'Enter Search Query...', class: 'input-group-field')
+        .input-group-button
+          = submit_tag("SEARCH", class: 'button search_btn')
+
+
+/ h2
+/   | Advanced Search
+/ = simple_form_for(@movie, url: 'search', html: { method: :get }) do |f|
+/   = f.error_notification
+/   .form-inputs
+/     = f.input :title
+/     = f.input :source
+/     = f.input :movie_id
+/     = f.input :quality
+
+/     = f.button :submit, 'Search For Movie'
+
+.gap2
+h2.text-center
+  | Results From YTS
+.row
+  ul.index-grid
+    - @yts_movies.each do |movie|
+      - watched = movie[:watched] ? 'watched' : '' 
+      li class="#{watched}"
+        = link_to src = "/movie/#{movie[:source]}/#{movie[:id]}"
+          img.thumbnail.homepage src="#{movie[:image_url]}"
+          p#movie_title
+            = movie[:title]
+        small#year_rating
+          = ' ('
+          = movie[:year]
+          = ') IMDB Rating: '
+          = movie[:rating]
+
+.gap3
+h2.text-center
+  | Results From Hypertorrent
+.row
+  ul.index-grid
+    - @hypertorrent_movies.each do |movie|
+      - watched = movie[:watched] ? 'watched' : '' 
+      li class="#{watched}"
+        = link_to src = "/movie/#{movie[:source]}/#{movie[:id]}"
+          img.thumbnail.homepage src="#{movie[:image_url]}"
+          p#movie_title
+            = movie[:title]
+        small#year_rating
+          = ' ('
+          = movie[:year]
+          = ') IMDB Rating: '
+          = movie[:rating]

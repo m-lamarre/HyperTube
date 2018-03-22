@@ -1,0 +1,27 @@
+- provide(:title, 'About')
+
+.row
+  .small-11.small-centered.medium-6.medium-centered.large-4.large-centered.columns
+    .row.column
+      h3.text-center
+        | About the Website
+      .gap
+      p.text-center
+        |  This is a  
+        = link_to('WeThinkCode_', 'http://www.wethinkcode.co.za/', target: '_blank', class: 'links')
+        |  school project, aimed at creating a Web Application that allows a User to search for, download then stream videos directly from this website.
+      .gap
+      p.text-center
+        | Once the video has been selected, it will be downloaded from the server and streamed on the web player at the same time.
+      .gap
+      p.text-center
+        | This project was created using 
+        = link_to('Ruby on Rails Web-Application Framework', 'http://rubyonrails.org/', target: '_blank', class: 'links') 
+        |  and 
+        = link_to('Foundation Front-End Framework', 'http://foundation.zurb.com/sites.html', target: '_blank', class: 'links')
+        | .
+      .gap
+      p.text-center
+        | Please see our website 
+        = link_to('Terms and Conditions', '/pages/terms_and_conditions', class: 'links')
+        |  for more information.

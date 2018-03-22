@@ -1,0 +1,2 @@
+class VisitorsController < HomepagesController
+end

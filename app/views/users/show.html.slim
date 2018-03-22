@@ -1,0 +1,49 @@
+- provide(:title, 'User Profile')
+
+.row.align-center.align-middle.medium-unstack
+  .column
+    .card.small-12.small-centered.medium-12.large-9.xlarge-9.xxlarge-8.large-centered
+      .card-divider
+        .row.text-center
+          h2 
+            | User Profile 
+          .gap
+          = image_tag @user.profile_picture.avatar.url,
+                      alt: "#{@user.first_name} #{@user.last_name}",
+                      class: 'profile-img',
+                      height: '200',
+                      width: '200'
+          .gap
+      .card-section
+        .row
+          .columns.medium-4.large-4
+            strong
+              | Username: 
+            p.user_details
+              = @user.username
+          .columns.medium-4.large-4
+            strong
+              | First Name: 
+            p.user_details
+              = @user.first_name
+          .columns.medium-4.large-4
+            strong
+              | Last Name: 
+            p.user_details
+              = @user.last_name
+        hr
+      - if @user.id == current_user.id
+        .card-section
+          .row
+            .columns.medium-4.large-4
+              strong
+                | Email: 
+              p.user_details
+                = @user.email
+            .columns.medium-4.large-4
+              strong
+                | Joined: 
+              p.user_details
+                = @user.created_at.strftime('%d %B %Y')
+            .columns.medium-4.large-4
+              = link_to 'EDIT PROFILE', edit_user_registration_path(@user), class: 'button'

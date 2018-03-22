@@ -1,0 +1,18 @@
+- provide(:title, 'Forgot Password')
+
+.row
+  .medium-6.medium-centered.large-4.large-centered.columns
+    .row.column.log-in-form
+      h3.text-center
+        | Forgot Your Password?
+      .gap
+      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :email, required: true, autofocus: true
+        .gap
+        .form-actions.text-center
+          = f.button :submit, 'RESET PASSWORD', class: 'button'
+        .gap
+        .text-center
+          = link_to 'Back', new_user_session_path, class: 'links'
