@@ -53,9 +53,6 @@ gem 'postmark-rails', '~> 0.15.0'
 gem 'pry-rails'
 gem 'puma', '~> 3.0'
 
-# To test on windows (TODO)
-# gem 'tzinfo-data'
-
 group :development do
   gem 'guard-bundler'
   gem 'guard-rails'
